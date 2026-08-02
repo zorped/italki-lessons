@@ -1,4 +1,4 @@
-:HL["/italki-lessons/_next/static/chunks/12hm48eb8j4gs.css","style"]
-:HL["/italki-lessons/_next/static/media/8c2eb9ceedecfc8e-s.p.0oeo8epbafgia.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/italki-lessons/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"students","param":null,"prefetchHints":0,"slots":{"children":{"name":"ihar","param":null,"prefetchHints":0,"slots":{"children":{"name":"lessons","param":null,"prefetchHints":0,"slots":{"children":{"name":"01","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"TP0Ec0-ESbz_ZzsER_rIk"}
+:HL["/italki-lessons/_next/static/chunks/1j-vjtpt2hmbj.css","style"]
+:HL["/italki-lessons/_next/static/media/8c2eb9ceedecfc8e-s.p.23aeddxv5enbo.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/italki-lessons/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"students","param":null,"prefetchHints":0,"slots":{"children":{"name":"ihar","param":null,"prefetchHints":0,"slots":{"children":{"name":"lessons","param":null,"prefetchHints":0,"slots":{"children":{"name":"01","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"vVTQFiHXaH4n6BXK0E75I"}

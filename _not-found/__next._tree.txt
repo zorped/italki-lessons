@@ -1,2 +1,2 @@
-:HL["/italki-lessons/_next/static/chunks/12hm48eb8j4gs.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"TP0Ec0-ESbz_ZzsER_rIk"}
+:HL["/italki-lessons/_next/static/chunks/1j-vjtpt2hmbj.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"vVTQFiHXaH4n6BXK0E75I"}
