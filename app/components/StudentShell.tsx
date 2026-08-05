@@ -45,7 +45,7 @@ export function StudentShell({
           <div className="studentIdentity">
             <span aria-hidden="true">{student.initial}</span>
             <div>
-              <small>Your English</small>
+              <small>Your {student.language}</small>
               <strong>{student.name}</strong>
             </div>
           </div>

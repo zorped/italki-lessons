@@ -8,7 +8,7 @@ export default function Home() {
           <span className="brandMark">K</span>
           <span>Krishna&apos;s Lesson Room</span>
         </Link>
-        <span className="topbarNote">English, made useful.</span>
+        <span className="topbarNote">Languages, made useful.</span>
       </header>
 
       <section className="homeHero">
@@ -72,6 +72,23 @@ export default function Home() {
               <span>Professional English</span>
               <span>Word choice</span>
               <span>Speaking</span>
+            </div>
+          </Link>
+
+          <Link className="studentCard cardSarah" href="/students/sarah">
+            <div className="studentCardTop">
+              <span className="studentInitial">S</span>
+              <span className="openLabel">Open review <span aria-hidden="true">↗</span></span>
+            </div>
+            <div>
+              <p className="cardLabel">Hindi · Trial lesson · 5 August 2026</p>
+              <h3>Sarah</h3>
+              <p>Useful phrases for moving from understanding Hindi to speaking it.</p>
+            </div>
+            <div className="topicChips" aria-label="Lesson topics">
+              <span>Speaking</span>
+              <span>Conversation</span>
+              <span>Confidence</span>
             </div>
           </Link>
         </div>

@@ -234,6 +234,10 @@ a {
   background: #b8ddd6;
 }
 
+.cardSarah {
+  background: #e5d7ef;
+}
+
 .studentCardTop {
   align-items: center;
   display: flex;
@@ -1075,6 +1079,13 @@ a {
   letter-spacing: 0.05em;
   margin-bottom: 8px;
   text-transform: uppercase;
+}
+
+.devanagari {
+  color: var(--ink) !important;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.5 !important;
 }
 
 .chapterCard .example {
