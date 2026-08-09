@@ -14,9 +14,11 @@ test("renders the student chooser", async () => {
   assert.match(html, /Ronaldo Rodrigues/);
   assert.match(html, /Ihar/);
   assert.match(html, /Sarah/);
+  assert.match(html, /Amanda/);
   assert.match(html, /\/students\/ronaldo/);
   assert.match(html, /\/students\/ihar/);
   assert.match(html, /\/students\/sarah/);
+  assert.match(html, /\/students\/amanda/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
@@ -102,4 +104,64 @@ test("renders Sarah's first Hindi chapter", async () => {
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ronaldo/);
   assert.doesNotMatch(html, /\/students\/ihar/);
+});
+
+test("renders Amanda's isolated Hindi notebook", async () => {
+  const html = await render("/students/amanda");
+  assert.match(html, /Amanda/);
+  assert.match(html, /Your Hindi notebook/);
+  assert.match(html, /href="\/students\/amanda\/chapters\/07"/);
+  assert.match(html, /href="\/students\/amanda\/chapters\/08"/);
+  assert.match(html, /href="\/students\/amanda\/chapters\/09"/);
+  assert.match(html, /10 August 2026/);
+  assert.doesNotMatch(html, /Building confident Hindi/);
+  assert.doesNotMatch(html, /Learn → Listen → Practise/);
+  assert.doesNotMatch(html, /\/students\/ronaldo/);
+  assert.doesNotMatch(html, /\/students\/ihar/);
+  assert.doesNotMatch(html, /\/students\/sarah/);
+});
+
+test("renders Amanda's Chapter 7 review without publishing source files", async () => {
+  const html = await render("/students/amanda/chapters/07");
+  assert.match(html, /भूत-काल/);
+  assert.match(html, /Build a past routine/);
+  assert.match(html, /Translate exercise 1 step by step/);
+  assert.match(html, /verb stem/);
+  assert.match(html, /No.*ने.*here/);
+  assert.match(html, /मनोज का अख़बार/);
+  assert.match(html, /Questions and negatives/);
+  assert.match(html, /Page 116 · Exercise 1/);
+  assert.match(html, /Page 116 · Exercise 2/);
+  assert.match(html, /Mark chapter complete/);
+  assert.match(html, /\/students\/amanda\/chapters\/07#translation-toolkit/);
+  assert.doesNotMatch(html, /Starter vocabulary/);
+  assert.doesNotMatch(html, /Useful.*मुझे.*patterns/);
+  assert.doesNotMatch(html, /\.pdf/i);
+  assert.doesNotMatch(html, /\.png/i);
+  assert.doesNotMatch(html, /\/students\/ronaldo/);
+  assert.doesNotMatch(html, /\/students\/ihar/);
+  assert.doesNotMatch(html, /\/students\/sarah/);
+});
+
+test("renders Amanda's selected Chapter 8 exercises", async () => {
+  const html = await render("/students/amanda/chapters/08");
+  assert.match(html, /Pages 135 and 136/);
+  assert.match(html, /Build phrases with postpositions/);
+  assert.match(html, /Comparisons with/);
+  assert.match(html, /continuous tense/i);
+  assert.match(html, /Answer in complete sentences/);
+  assert.match(html, /Mark chapter complete/);
+  assert.doesNotMatch(html, /\.pdf|\.png/i);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah/);
+});
+
+test("renders the corrected Chapter 9 hotel role-play", async () => {
+  const html = await render("/students/amanda/chapters/09");
+  assert.match(html, /Chapter 09 · Page 152, exercise 2/);
+  assert.match(html, /Hotel role-play/);
+  assert.match(html, /Open language support/);
+  assert.match(html, /क्या मैं कमरे से लंदन फ़ोन कर सकती हूँ/);
+  assert.match(html, /Mark chapter complete/);
+  assert.doesNotMatch(html, /\.pdf|\.png/i);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah/);
 });

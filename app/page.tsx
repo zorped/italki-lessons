@@ -91,6 +91,23 @@ export default function Home() {
               <span>Confidence</span>
             </div>
           </Link>
+
+          <Link className="studentCard cardAmanda" href="/students/amanda">
+            <div className="studentCardTop">
+              <span className="studentInitial">A</span>
+              <span className="openLabel">Open notebook <span aria-hidden="true">↗</span></span>
+            </div>
+            <div>
+              <p className="cardLabel">Hindi · Chapters 07–09 · 10 August 2026</p>
+              <h3>Amanda</h3>
+              <p>Focused vocabulary and speaking practice alongside <em>Get Started in Hindi</em>.</p>
+            </div>
+            <div className="topicChips" aria-label="Chapter topics">
+              <span>Past tense</span>
+              <span>Vocabulary</span>
+              <span>Speaking</span>
+            </div>
+          </Link>
         </div>
       </section>
 

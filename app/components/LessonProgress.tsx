@@ -35,7 +35,15 @@ export function ProgressBadge({ studentId, total }: { studentId: string; total: 
   );
 }
 
-export function CompleteLessonButton({ studentId, lessonId }: { studentId: string; lessonId: string }) {
+export function CompleteLessonButton({
+  studentId,
+  lessonId,
+  label = "lesson",
+}: {
+  studentId: string;
+  lessonId: string;
+  label?: string;
+}) {
   const [complete, setComplete] = useState(false);
 
   useEffect(() => {
@@ -56,7 +64,7 @@ export function CompleteLessonButton({ studentId, lessonId }: { studentId: strin
 
   return (
     <button className="completeButton" type="button" onClick={toggleComplete}>
-      {complete ? "Completed ✓" : "Mark lesson complete"}
+      {complete ? "Completed ✓" : `Mark ${label} complete`}
     </button>
   );
 }

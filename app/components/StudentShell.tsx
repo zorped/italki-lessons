@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { StudentConfig } from "../students/student-data";
 import { ProgressBadge } from "./LessonProgress";
 
@@ -16,6 +16,7 @@ export function StudentShell({
 }) {
   const sidebarKey = `english-lessons-${student.id}-sidebar`;
   const [collapsed, setCollapsed] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -27,6 +28,16 @@ export function StudentShell({
     });
     return () => window.cancelAnimationFrame(frame);
   }, [sidebarKey]);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      if (!window.matchMedia("(max-width: 760px)").matches) return;
+      navRef.current
+        ?.querySelector<HTMLElement>('[aria-current="page"]')
+        ?.scrollIntoView({ block: "nearest", inline: "center" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [active]);
 
   function toggleSidebar() {
     const next = !collapsed;
@@ -61,7 +72,7 @@ export function StudentShell({
           </button>
         </div>
 
-        <nav className="learningNav" aria-label="Lesson navigation">
+        <nav className="learningNav" aria-label="Lesson navigation" ref={navRef}>
           <div className="learningNavGroup">
             <p>Start</p>
             <Link href={student.basePath} aria-current={active === "overview" ? "page" : undefined}>
@@ -71,12 +82,24 @@ export function StudentShell({
           </div>
 
           <div className="learningNavGroup">
-            <p>Your lessons</p>
+            <p>{student.navigationLabel || "Your lessons"}</p>
             {student.lessons.map((lesson) => (
-              <Link key={lesson.id} href={lesson.href} aria-current={active === lesson.id ? "page" : undefined}>
-                <span className="navIndex">{lesson.number}</span>
-                <span>{lesson.title}</span>
-              </Link>
+              <div className="learningNavChapter" key={lesson.id}>
+                <Link href={lesson.href} aria-current={active === lesson.id ? "page" : undefined}>
+                  <span className="navIndex">{lesson.number}</span>
+                  <span>{lesson.title}</span>
+                </Link>
+                {active === lesson.id && lesson.sections ? (
+                  <div className="learningSubnav" aria-label={`${lesson.title} sections`}>
+                    {lesson.sections.map((section) => (
+                      <Link href={`${lesson.href}#${section.id}`} key={section.id}>
+                        <span>{section.number}</span>
+                        <span>{section.title}</span>
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             ))}
           </div>
         </nav>
