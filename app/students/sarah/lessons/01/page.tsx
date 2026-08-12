@@ -4,7 +4,7 @@ import { StudentShell } from "../../../../components/StudentShell";
 import { sarah } from "../../../student-data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Keep speaking in Hindi · Sarah's Hindi" },
+  title: { absolute: "Keep speaking in Hindi · Sara's Hindi" },
   description: "Twelve useful Hindi phrases for keeping a conversation moving.",
 };
 

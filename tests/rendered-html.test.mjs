@@ -13,7 +13,7 @@ test("renders the student chooser", async () => {
   assert.match(html, /Krishna(?:&apos;|&#x27;|'|’|\u2019)s Lesson Room/i);
   assert.match(html, /Ronaldo Rodrigues/);
   assert.match(html, /Ihar/);
-  assert.match(html, /Sarah/);
+  assert.match(html, /Sara/);
   assert.match(html, /Amanda/);
   assert.match(html, /\/students\/ronaldo/);
   assert.match(html, /\/students\/ihar/);
@@ -81,13 +81,32 @@ test("renders Ihar's first chapter", async () => {
 
 test("renders Sarah's isolated Hindi lesson overview", async () => {
   const html = await render("/students/sarah");
-  assert.match(html, /Sarah/);
+  assert.match(html, /Sara/);
   assert.match(html, /Your Hindi notebook/);
   assert.match(html, /href="\/students\/sarah\/lessons\/01"/);
+  assert.match(html, /href="\/students\/sarah\/lessons\/02"/);
   assert.match(html, /aria-label="Hide sidebar"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ronaldo/);
   assert.doesNotMatch(html, /\/students\/ihar/);
+});
+
+test("renders Sara's second everyday Hinglish lesson", async () => {
+  const html = await render("/students/sarah/lessons/02");
+  assert.match(html, /Time, memories and work/);
+  assert.match(html, /12 August 2026/);
+  assert.match(html, /मेरी पिछली इंडिया ट्रिप/);
+  assert.match(html, /वह बहुत अच्छी नहीं थी/);
+  assert.match(html, /साढ़े सात बजे हैं/);
+  assert.match(html, /मैं एक बार में काम करती हूँ/);
+  assert.match(html, /शुरू होता है/);
+  assert.match(html, /खत्म होता है/);
+  assert.match(html, /जब मैं पहली बार न्यू यॉर्क आई थी/);
+  assert.match(html, /मुझे याद नहीं है/);
+  assert.match(html, /मुझे यह इंटरेस्टिंग लगता है/);
+  assert.match(html, /Mark lesson complete/);
+  assert.doesNotMatch(html, /Thursday|Friday|Saturday|Hyderabad/i);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/amanda/);
 });
 
 test("renders Sarah's first Hindi chapter", async () => {

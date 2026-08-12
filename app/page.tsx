@@ -82,7 +82,7 @@ export default function Home() {
             </div>
             <div>
               <p className="cardLabel">Hindi · Trial lesson · 5 August 2026</p>
-              <h3>Sarah</h3>
+              <h3>Sara</h3>
               <p>Useful phrases for moving from understanding Hindi to speaking it.</p>
             </div>
             <div className="topicChips" aria-label="Lesson topics">

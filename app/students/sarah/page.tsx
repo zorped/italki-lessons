@@ -4,8 +4,8 @@ import { StudentShell } from "../../components/StudentShell";
 import { sarah } from "../student-data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Sarah's Hindi lessons" },
-  description: "Sarah's personal Hindi speaking notes and practice.",
+  title: { absolute: "Sara's Hindi lessons" },
+  description: "Sara's personal Hindi and Hinglish speaking notes and practice.",
 };
 
 export default function SarahOverview() {
@@ -13,7 +13,7 @@ export default function SarahOverview() {
     <StudentShell student={sarah} active="overview">
       <section className="studentOverview">
         <p className="eyebrow">Your Hindi notebook</p>
-        <h1>Welcome, Sarah.</h1>
+        <h1>Welcome, Sara.</h1>
         <p className="overviewLead">
           {sarah.focus} Choose a lesson whenever you want to review and speak aloud.
         </p>

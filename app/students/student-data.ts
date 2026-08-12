@@ -63,7 +63,7 @@ export const ihar: StudentConfig = {
 
 export const sarah: StudentConfig = {
   id: "sarah",
-  name: "Sarah",
+  name: "Sara",
   initial: "S",
   language: "Hindi",
   basePath: "/students/sarah",
@@ -76,6 +76,20 @@ export const sarah: StudentConfig = {
       summary: "Conversation bridges and rescue phrases for speaking without switching to English.",
       date: "5 August 2026",
       href: "/students/sarah/lessons/01",
+    },
+    {
+      id: "02",
+      number: "02",
+      title: "Time, memories and work",
+      summary: "Natural Delhi Hindi for talking about time, past experiences, work and remembering.",
+      date: "12 August 2026",
+      href: "/students/sarah/lessons/02",
+      sections: [
+        { id: "past-experiences", number: "2.1", title: "Past experiences" },
+        { id: "time-and-work", number: "2.2", title: "Time and work" },
+        { id: "remembering", number: "2.3", title: "Remembering" },
+        { id: "speaking-practice", number: "2.4", title: "Practice" },
+      ],
     },
   ],
 };
