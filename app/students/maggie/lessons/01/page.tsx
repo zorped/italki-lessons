@@ -25,6 +25,10 @@ const pronunciation = [
   { word: "accept", sound: "uk-SEPT", note: "Stress the second syllable." },
   { word: "genuine", sound: "JEN-yoo-in", note: "Three clear syllables." },
   { word: "entirely", sound: "en-TY-er-lee", note: "Stress TY." },
+  { word: "merely", sound: "MEER-lee", note: "Keep the first syllable like mere." },
+  { word: "rare", sound: "RAIR", note: "Use one clear syllable." },
+  { word: "rarely", sound: "RAIR-lee", note: "Build it from rare + -ly." },
+  { word: "area", sound: "AIR-ee-uh", note: "Use three clear syllables; areas ends with /z/." },
 ];
 
 const readingPages: ReadingPage[] = [
@@ -314,6 +318,33 @@ const readingPages: ReadingPage[] = [
     paragraphs: [
       {
         text: "Direction is the prerequisite, and effort is the amplifier. Effort without direction is merely depletion. Only directed obsessive effort has the power to change your life. Therefore, you do not need to go all-in on everything. You only need to commit fully to that one thing you have confirmed.",
+        notes: [
+          {
+            text: "amplifier",
+            kind: "meaning",
+            priority: "extension",
+            title: "amplifier",
+            explanation: "Something that makes an effect stronger. Here, effort makes the effect of a good direction stronger.",
+            example: "Clear feedback can act as an amplifier for learning.",
+          },
+          {
+            text: "merely",
+            kind: "pronunciation",
+            priority: "high",
+            title: "merely",
+            pronunciation: "MEER-lee",
+            explanation: "Only or simply. Barely means only just or almost not; hardly means almost not.",
+            example: "It is merely a suggestion. I barely passed. I hardly slept.",
+          },
+          {
+            text: "depletion",
+            kind: "meaning",
+            priority: "extension",
+            title: "depletion",
+            explanation: "A serious reduction in the amount of something available.",
+            example: "Working without rest can lead to energy depletion.",
+          },
+        ],
       },
       {
         text: "You confirm your direction not by overthinking, but by trial. Start small, and judge whether this undertaking deserves greater investment based on real feedback. Once you are certain, go all in.",
@@ -328,6 +359,24 @@ const readingPages: ReadingPage[] = [
       },
       {
         text: "This sequence — confirm first, then commit fully — is far more stable than rushing into total dedication at once. You are not investing irrationally. You are rationally and deliberately pushing yourself toward a higher level.",
+        notes: [
+          {
+            text: "irrationally",
+            kind: "meaning",
+            priority: "extension",
+            title: "irrationally",
+            explanation: "In a way that is not based on clear reason or sensible judgment.",
+            example: "Fear can make people react irrationally.",
+          },
+          {
+            text: "deliberately",
+            kind: "meaning",
+            priority: "high",
+            title: "deliberately",
+            explanation: "Intentionally and with conscious thought, not by accident.",
+            example: "She deliberately slowed down so everyone could follow.",
+          },
+        ],
       },
     ],
   },
@@ -336,9 +385,49 @@ const readingPages: ReadingPage[] = [
     paragraphs: [
       {
         text: 'There is another psychological reason why obsessive effort can transform your life. When you invest far more effort than most people into one pursuit, you develop a deep sense of identity with it. You are no longer merely "doing this thing"; you become part of it. This identity changes how you face setbacks.',
+        notes: [
+          {
+            text: "pursuit",
+            kind: "meaning",
+            priority: "medium",
+            title: "pursuit",
+            explanation: "An activity or goal that you spend time and energy trying to develop or achieve.",
+            example: "Improving her English became a serious pursuit.",
+          },
+          {
+            text: "merely",
+            kind: "pronunciation",
+            priority: "high",
+            title: "merely",
+            pronunciation: "MEER-lee",
+            explanation: "Only or simply; it reduces the importance of what follows.",
+            example: "She is not merely attending meetings; she is leading them.",
+          },
+          {
+            text: "setbacks",
+            kind: "meaning",
+            priority: "high",
+            title: "setback",
+            explanation: "A problem or delay that temporarily slows your progress.",
+            example: "A few setbacks did not stop her from continuing.",
+          },
+        ],
       },
       { text: "You will not give up easily, because you are not just completing a task — you are shaping yourself. Every hardship you overcome becomes part of who you are." },
-      { text: "Those who transform their lives are rarely the most gifted. They are the ones who devote themselves to one thing far more deeply than those around them." },
+      {
+        text: "Those who transform their lives are rarely the most gifted. They are the ones who devote themselves to one thing far more deeply than those around them.",
+        notes: [
+          {
+            text: "rarely",
+            kind: "pronunciation",
+            priority: "high",
+            title: "rarely",
+            pronunciation: "RAIR-lee",
+            explanation: "Not often. Form it from rare + -ly; rare means uncommon.",
+            example: "Such opportunities are rare; they rarely appear twice.",
+          },
+        ],
+      },
     ],
   },
   {
@@ -352,7 +441,28 @@ const readingPages: ReadingPage[] = [
   {
     number: 10,
     paragraphs: [
-      { text: "True life transformation never comes from waiting for fate to hand you a chance. It comes from pushing past the ordinary in one area, until a new version of yourself is created." },
+      {
+        text: "True life transformation never comes from waiting for fate to hand you a chance. It comes from pushing past the ordinary in one area, until a new version of yourself is created.",
+        notes: [
+          {
+            text: "fate",
+            kind: "meaning",
+            priority: "medium",
+            title: "fate, destiny and luck",
+            explanation: "Fate is an outcome believed to be outside your control. Destiny suggests a future you are meant to have. Luck is chance affecting a particular result.",
+            example: "She did not leave it to fate; she worked hard and had some good luck along the way.",
+          },
+          {
+            text: "area",
+            kind: "pronunciation",
+            priority: "high",
+            title: "area",
+            pronunciation: "AIR-ee-uh",
+            explanation: "Use three clear syllables. The plural areas ends with a /z/ sound.",
+            example: "Communication is one area she wants to improve.",
+          },
+        ],
+      },
     ],
   },
 ];
@@ -364,7 +474,7 @@ export default function MaggieLessonOne() {
         <p className="eyebrow">English · Lesson 01 · 7 October 2026</p>
         <h1>Effort, focus and trade-offs</h1>
         <p className="overviewLead">
-          Review the most useful language from pages 1–6 of <em>Obsessive Effort Can Actually Change Your Life</em>.
+          Review the most useful language from <em>Obsessive Effort Can Actually Change Your Life</em>.
         </p>
       </section>
 
@@ -403,7 +513,7 @@ export default function MaggieLessonOne() {
         <section className="chapterCard readingContextCard" id="reading-in-context">
           <p className="sectionKicker">1.3</p>
           <h2>Read with help in context</h2>
-          <p className="rule">Read normally. Hover over a highlight—or tap it on a phone—to open pronunciation help, meaning or a useful language note.</p>
+          <p className="rule">Read normally. Hover over a highlight—or tap it on a phone—to open a note. Colour shows how useful the language is to learn first.</p>
           <ContextReading title="Obsessive Effort Can Actually Change Your Life" pages={readingPages} />
         </section>
 
@@ -415,7 +525,7 @@ export default function MaggieLessonOne() {
         </section>
 
         <section className="chapterEnd">
-          <p>Next time: continue the article after page 6.</p>
+          <p>Pages 7–10 reviewed on 8 October 2026.</p>
           <CompleteLessonButton studentId="maggie" lessonId="01" />
         </section>
       </div>

@@ -109,7 +109,17 @@ test("renders Maggie's first reading review", async () => {
   assert.doesNotMatch(html, /Useful language from the reading/);
   assert.match(html, /Read with help in context/);
   assert.match(html, /Pronunciation/);
-  assert.match(html, /Phrase or idea/);
+  assert.match(html, /High priority/);
+  assert.match(html, /Useful next/);
+  assert.match(html, /Extension/);
+  assert.match(html, /amplifier/);
+  assert.match(html, /depletion/);
+  assert.match(html, /deliberately/);
+  assert.match(html, /irrationally/);
+  assert.match(html, /pursuit/);
+  assert.match(html, /setbacks/);
+  assert.match(html, /rarely/);
+  assert.match(html, /fate, destiny and luck/);
   assert.match(html, /You confirm your direction not by overthinking/);
   assert.match(html, /True life transformation never comes from waiting for fate/);
   assert.match(html, /Practise the language/);
@@ -118,7 +128,7 @@ test("renders Maggie's first reading review", async () => {
   assert.match(html, /Complete the sentences/);
   assert.match(html, /Make the language yours/);
   assert.match(html, /1\.4/);
-  assert.match(html, /continue the article after page 6/i);
+  assert.match(html, /Pages 7–10 reviewed on 8 October 2026/);
   assert.match(html, /Mark lesson complete/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });

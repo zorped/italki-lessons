@@ -5,6 +5,7 @@ import { useEffect, useState, type ReactNode } from "react";
 export type ReadingNote = {
   text: string;
   kind: "pronunciation" | "meaning" | "phrase";
+  priority?: "high" | "medium" | "extension";
   title: string;
   explanation: string;
   pronunciation?: string;
@@ -23,6 +24,12 @@ const kindLabels: Record<ReadingNote["kind"], string> = {
   pronunciation: "Pronunciation",
   meaning: "Meaning",
   phrase: "Phrase and idea",
+};
+
+const priorityLabels: Record<NonNullable<ReadingNote["priority"]>, string> = {
+  high: "High priority",
+  medium: "Useful next",
+  extension: "Extension",
 };
 
 function AnnotatedParagraph({
@@ -62,9 +69,11 @@ function AnnotatedParagraph({
     const side = location > 0.62 ? "right" : location > 0.28 ? "centre" : "left";
     const isOpen = openNote === key;
 
+    const priority = match.note.priority ?? "medium";
+
     output.push(
       <span
-        className={`readingMarkWrap readingMark-${match.note.kind} readingPopup-${side}${isOpen ? " isOpen" : ""}`}
+        className={`readingMarkWrap readingPriority-${priority} readingPopup-${side}${isOpen ? " isOpen" : ""}`}
         key={key}
       >
         <button
@@ -80,7 +89,7 @@ function AnnotatedParagraph({
           {match.note.text}
         </button>
         <span className="readingPopover" id={popupId} role="tooltip">
-          <small>{kindLabels[match.note.kind]}</small>
+          <small>{kindLabels[match.note.kind]} · {priorityLabels[priority]}</small>
           <strong>{match.note.title}</strong>
           {match.note.pronunciation ? <b>{match.note.pronunciation}</b> : null}
           <span>{match.note.explanation}</span>
@@ -109,9 +118,9 @@ export function ContextReading({ title, pages }: { title: string; pages: Reading
   return (
     <div className="contextReading">
       <div className="readingLegend" aria-label="Annotation key">
-        <span className="legendPronunciation">Pronunciation</span>
-        <span className="legendMeaning">Meaning</span>
-        <span className="legendPhrase">Phrase or idea</span>
+        <span className="legendHigh">High priority</span>
+        <span className="legendMedium">Useful next</span>
+        <span className="legendExtension">Extension</span>
       </div>
 
       <article className="readingPaper">
