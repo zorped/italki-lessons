@@ -1615,6 +1615,218 @@ a {
   margin: 0;
 }
 
+/* Contextual reading annotations */
+.readingContextCard {
+  overflow: visible;
+}
+
+.readingLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 16px 0;
+}
+
+.readingLegend span {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 7px;
+}
+
+.readingLegend span::before {
+  border-radius: 3px;
+  content: "";
+  height: 12px;
+  width: 18px;
+}
+
+.legendPronunciation::before,
+.readingMark-pronunciation .readingMark {
+  background: #f8c9bb;
+  box-shadow: inset 0 -1px 0 #c96a54;
+}
+
+.legendMeaning::before,
+.readingMark-meaning .readingMark {
+  background: #f5df80;
+  box-shadow: inset 0 -1px 0 #c3941f;
+}
+
+.legendPhrase::before,
+.readingMark-phrase .readingMark {
+  background: #cfe4d6;
+  box-shadow: inset 0 -1px 0 #6a9b7d;
+}
+
+.readingPaper {
+  background: #fffefb;
+  border: 1px solid #d8d2c6;
+  border-radius: 12px;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: clamp(20px, 4vw, 38px);
+}
+
+.readingPaper > h3 {
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 32px;
+}
+
+.readingPage {
+  border-top: 1px solid #e2ddd3;
+  padding: 25px 0 12px;
+}
+
+.readingPage h4 {
+  color: var(--sage);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.readingPage p {
+  color: var(--ink);
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.82;
+  margin: 0 0 18px;
+}
+
+.readingMarkWrap {
+  display: inline;
+  position: relative;
+}
+
+.readingMark {
+  border: 0;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  color: inherit;
+  cursor: help;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 1px 2px;
+  text-align: left;
+  -webkit-box-decoration-break: clone;
+}
+
+.readingMark:hover,
+.readingMark:focus-visible,
+.readingMarkWrap.isOpen .readingMark {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.readingPopover {
+  background: var(--ink);
+  border-radius: 10px;
+  bottom: calc(100% + 10px);
+  box-shadow: 0 14px 34px rgba(24, 32, 31, 0.22);
+  color: var(--paper-light);
+  display: block;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  line-height: 1.45;
+  opacity: 0;
+  padding: 13px 14px;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  width: min(300px, calc(100vw - 72px));
+  z-index: 30;
+}
+
+.readingPopup-left .readingPopover {
+  left: 0;
+  transform: translateY(5px);
+}
+
+.readingPopup-centre .readingPopover {
+  left: 50%;
+  transform: translate(-50%, 5px);
+}
+
+.readingPopup-right .readingPopover {
+  right: 0;
+  transform: translateY(5px);
+}
+
+.readingMarkWrap:hover .readingPopover,
+.readingMarkWrap:focus-within .readingPopover,
+.readingMarkWrap.isOpen .readingPopover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.readingPopup-left:hover .readingPopover,
+.readingPopup-left:focus-within .readingPopover,
+.readingPopup-left.isOpen .readingPopover,
+.readingPopup-right:hover .readingPopover,
+.readingPopup-right:focus-within .readingPopover,
+.readingPopup-right.isOpen .readingPopover {
+  transform: translateY(0);
+}
+
+.readingPopup-centre:hover .readingPopover,
+.readingPopup-centre:focus-within .readingPopover,
+.readingPopup-centre.isOpen .readingPopover {
+  transform: translate(-50%, 0);
+}
+
+.readingPopover small,
+.readingPopover strong,
+.readingPopover b,
+.readingPopover span,
+.readingPopover em {
+  display: block;
+}
+
+.readingPopover small {
+  color: #b7c2be;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.readingPopover strong {
+  color: white;
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.readingPopover b {
+  color: #f2baaa;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.readingPopover span {
+  color: #e2e7e5;
+  font-size: 0.78rem;
+}
+
+.readingPopover em {
+  border-top: 1px solid #48514e;
+  color: #c8d8cf;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 0.77rem;
+  font-style: normal;
+  margin-top: 9px;
+  padding-top: 8px;
+}
+
 .selectedExercises {
   display: grid;
   gap: 9px;

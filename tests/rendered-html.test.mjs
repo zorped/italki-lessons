@@ -79,6 +79,44 @@ test("renders Ihar's first chapter", async () => {
   assert.doesNotMatch(html, /\/students\/ronaldo/);
 });
 
+test("renders Maggie's isolated English notebook", async () => {
+  const html = await render("/students/maggie");
+  assert.match(html, /Maggie/);
+  assert.match(html, /Your English notebook/);
+  assert.match(html, /href="\/students\/maggie\/lessons\/01"/);
+  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.doesNotMatch(html, /href="\/"/);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
+});
+
+test("renders Maggie's first reading review", async () => {
+  const html = await render("/students/maggie/lessons/01");
+  assert.match(html, /Effort, focus and trade-offs/);
+  assert.match(html, /7 October 2026/);
+  assert.match(html, /luckier/);
+  assert.match(html, /obsessive/);
+  assert.match(html, /consumes/);
+  assert.match(html, /prerequisite/);
+  assert.match(html, /yield results/);
+  assert.match(html, /realm/);
+  assert.match(html, /dive deep into something/);
+  assert.match(html, /crave change/);
+  assert.match(html, /long for change/);
+  assert.match(html, /breakthrough/);
+  assert.match(html, /spread myself too thin/);
+  assert.match(html, /devote most of my time/);
+  assert.match(html, /Final-s check/);
+  assert.match(html, /Read with help in context/);
+  assert.match(html, /Pronunciation/);
+  assert.match(html, /Phrase or idea/);
+  assert.match(html, /You confirm your direction not by overthinking/);
+  assert.match(html, /True life transformation never comes from waiting for fate/);
+  assert.match(html, /1\.5/);
+  assert.match(html, /continue the article after page 6/i);
+  assert.match(html, /Mark lesson complete/);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
+});
+
 test("renders Sarah's isolated Hindi lesson overview", async () => {
   const html = await render("/students/sarah");
   assert.match(html, /Sara/);

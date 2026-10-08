@@ -61,6 +61,32 @@ export const ihar: StudentConfig = {
   ],
 };
 
+export const maggie: StudentConfig = {
+  id: "maggie",
+  name: "Maggie",
+  initial: "M",
+  language: "English",
+  basePath: "/students/maggie",
+  focus: "Listening confidently to Indian English and expressing ideas with precise, natural vocabulary.",
+  lessons: [
+    {
+      id: "01",
+      number: "01",
+      title: "Effort, focus and trade-offs",
+      summary: "Pronunciation, vocabulary connections and natural English from our article discussion.",
+      date: "7 October 2026",
+      href: "/students/maggie/lessons/01",
+      sections: [
+        { id: "pronunciation", number: "1.1", title: "Pronunciation" },
+        { id: "useful-language", number: "1.2", title: "Useful language" },
+        { id: "natural-english", number: "1.3", title: "Natural English" },
+        { id: "reading-in-context", number: "1.4", title: "Reading in context" },
+        { id: "practice", number: "1.5", title: "Practice" },
+      ],
+    },
+  ],
+};
+
 export const sarah: StudentConfig = {
   id: "sarah",
   name: "Sara",
