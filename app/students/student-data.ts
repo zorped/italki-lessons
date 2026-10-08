@@ -78,10 +78,9 @@ export const maggie: StudentConfig = {
       href: "/students/maggie/lessons/01",
       sections: [
         { id: "pronunciation", number: "1.1", title: "Pronunciation" },
-        { id: "useful-language", number: "1.2", title: "Useful language" },
-        { id: "natural-english", number: "1.3", title: "Natural English" },
-        { id: "reading-in-context", number: "1.4", title: "Reading in context" },
-        { id: "practice", number: "1.5", title: "Practice" },
+        { id: "natural-english", number: "1.2", title: "Natural English" },
+        { id: "reading-in-context", number: "1.3", title: "Reading in context" },
+        { id: "practice", number: "1.4", title: "Practice" },
       ],
     },
   ],

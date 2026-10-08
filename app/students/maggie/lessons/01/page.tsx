@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContextReading, type ReadingPage } from "../../../../components/ContextReading";
 import { CompleteLessonButton } from "../../../../components/LessonProgress";
 import { StudentShell } from "../../../../components/StudentShell";
+import { VocabularyPractice } from "../../../../components/VocabularyPractice";
 import { maggie } from "../../../student-data";
 
 export const metadata: Metadata = {
@@ -24,89 +25,6 @@ const pronunciation = [
   { word: "accept", sound: "uk-SEPT", note: "Stress the second syllable." },
   { word: "genuine", sound: "JEN-yoo-in", note: "Three clear syllables." },
   { word: "entirely", sound: "en-TY-er-lee", note: "Stress TY." },
-];
-
-const usefulLanguage = [
-  {
-    phrase: "obsessive",
-    meaning: "giving an unusually intense amount of attention to one thing",
-    example: "The article uses obsessive effort to mean extreme, concentrated dedication.",
-  },
-  {
-    phrase: "core",
-    meaning: "the central or most important part of something",
-    example: "Clear communication is at the core of effective logistics.",
-  },
-  {
-    phrase: "yield results",
-    meaning: "produce or bring results",
-    example: "Consistent practice usually yields better results than occasional study.",
-  },
-  {
-    phrase: "realm",
-    meaning: "an area of knowledge, activity or experience",
-    example: "This problem belongs in the realm of supply-chain planning.",
-  },
-  {
-    phrase: "disperse",
-    meaning: "spread or scatter in different directions",
-    example: "Do not disperse your attention across too many goals.",
-  },
-  {
-    phrase: "in the zone",
-    meaning: "deeply focused and fully absorbed in an activity",
-    example: "Once I am in the zone, I stop noticing the time.",
-  },
-  {
-    phrase: "spread yourself too thin",
-    meaning: "try to give time and energy to too many things",
-    example: "I spread myself too thin across work, travel and several hobbies.",
-  },
-  {
-    phrase: "ceiling",
-    meaning: "a figurative upper limit, not only the top of a room",
-    example: "The experience showed me that my ceiling was higher than I thought.",
-  },
-  {
-    phrase: "dive deep into something",
-    meaning: "study, examine or focus on it thoroughly",
-    example: "I want to dive deep into English and technical skills.",
-  },
-  {
-    phrase: "massive amounts of",
-    meaning: "very large quantities of something",
-    example: "The project consumed massive amounts of time and energy.",
-  },
-  {
-    phrase: "trade-off",
-    meaning: "a choice in which gaining one thing means giving up another",
-    example: "The trade-off is having less free time while I improve my English.",
-  },
-  {
-    phrase: "prerequisite",
-    meaning: "something required before something else can happen",
-    example: "Clear communication is a prerequisite for effective teamwork.",
-  },
-  {
-    phrase: "throw something out of balance",
-    meaning: "disturb its normal or healthy balance",
-    example: "Too much overtime can throw the rest of life out of balance.",
-  },
-  {
-    phrase: "long for something",
-    meaning: "want something deeply, especially for a long time",
-    example: "Many people long for meaningful change.",
-  },
-  {
-    phrase: "crave something",
-    meaning: "feel a powerful desire for something",
-    example: "They crave a breakthrough but do not want to take risks.",
-  },
-  {
-    phrase: "breakthrough",
-    meaning: "an important advance that helps you overcome a difficulty",
-    example: "Understanding faster speech would be a major breakthrough.",
-  },
 ];
 
 const readingPages: ReadingPage[] = [
@@ -469,36 +387,8 @@ export default function MaggieLessonOne() {
           </aside>
         </section>
 
-        <section className="chapterCard" id="useful-language">
-          <p className="sectionKicker">1.2</p>
-          <h2>Useful language from the reading</h2>
-          <div className="examplePhraseList">
-            {usefulLanguage.map((item) => (
-              <article key={item.phrase}>
-                <div>
-                  <h3>{item.phrase}</h3>
-                  <p>{item.meaning}</p>
-                  <p className="example">{item.example}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="phraseBank connectionBank">
-            <p><strong>Word family</strong><span>obsessive · obsession · obsessively</span></p>
-            <p><strong>Put energy into</strong><span>pour into · devote to · concentrate on</span></p>
-            <p><strong>Produce</strong><span>yield · produce · bring</span></p>
-            <p><strong>Spreading</strong><span>spread · disperse · scatter</span></p>
-            <p><strong>Commitment</strong><span>dedication · devotion · commitment</span></p>
-            <p><strong>Strong desire</strong><span>crave something · long for something</span></p>
-            <p><strong>Completely</strong><span>entirely · completely · wholly</span></p>
-          </div>
-          <aside className="chapterNote">
-            <strong>Pattern check:</strong> say <em>crave change</em>, but <em>long for change</em>. Use <em>for</em> after <strong>long</strong>, not after <strong>crave</strong>.
-          </aside>
-        </section>
-
         <section className="chapterCard" id="natural-english">
-          <p className="sectionKicker">1.3</p>
+          <p className="sectionKicker">1.2</p>
           <h2>Make your ideas sound more natural</h2>
           <p className="rule">Learn the complete sentence patterns, then change the details to fit your own situation.</p>
           <div className="correctionList">
@@ -511,23 +401,17 @@ export default function MaggieLessonOne() {
         </section>
 
         <section className="chapterCard readingContextCard" id="reading-in-context">
-          <p className="sectionKicker">1.4</p>
+          <p className="sectionKicker">1.3</p>
           <h2>Read with help in context</h2>
           <p className="rule">Read normally. Hover over a highlight—or tap it on a phone—to open pronunciation help, meaning or a useful language note.</p>
           <ContextReading title="Obsessive Effort Can Actually Change Your Life" pages={readingPages} />
         </section>
 
         <section className="chapterCard" id="practice">
-          <p className="sectionKicker">1.5</p>
-          <h2>Speak without reading</h2>
-          <ol className="amandaPractice">
-            <li><span>01</span><p>Explain why this article inspired you. Use <strong>in the zone</strong> and <strong>devote</strong>.</p></li>
-            <li><span>02</span><p>Describe a time when you <strong>spread yourself too thin</strong>.</p></li>
-            <li><span>03</span><p>Name one <strong>trade-off</strong> you may need to make to reach a goal.</p></li>
-            <li><span>04</span><p>Describe a genuine <strong>breakthrough</strong> in your work or learning.</p></li>
-            <li><span>05</span><p>Summarise pages 1–6 in one minute using four expressions from this page.</p></li>
-            <li><span>06</span><p>Compare <strong>crave change</strong> with <strong>long for change</strong>, then make one sentence with each pattern.</p></li>
-          </ol>
+          <p className="sectionKicker">1.4</p>
+          <h2>Practise the language</h2>
+          <p className="rule">Return to the highlighted reading whenever you need a clue, then try again without looking.</p>
+          <VocabularyPractice />
         </section>
 
         <section className="chapterEnd">
