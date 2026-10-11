@@ -1326,6 +1326,73 @@ a {
   font-weight: 750;
 }
 
+.contrastStack {
+  display: grid;
+  gap: 12px;
+}
+
+.contrastGroup {
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.contrastGroup > header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.contrastGroup > header h3 {
+  margin: 0;
+}
+
+.contrastGroup > header span {
+  background: #e3efeb;
+  border-radius: 999px;
+  color: #315f55;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 5px 9px;
+}
+
+.contrastWords {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contrastWords > div {
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 10px 11px;
+}
+
+.contrastWords strong {
+  color: var(--sage);
+}
+
+.contrastWords p {
+  margin: 3px 0 !important;
+}
+
+.contrastWords small {
+  color: var(--ink);
+  display: block;
+  line-height: 1.45;
+}
+
+.contrastNote {
+  border-left: 2px solid var(--mustard);
+  color: var(--ink) !important;
+  margin-top: 11px !important;
+  padding-left: 10px;
+}
+
 .practiceSet {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -2387,12 +2454,52 @@ a {
   padding-left: 24px;
 }
 
+.speakingAnswer {
+  margin: 0;
+}
+
+.speakingAnswer summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 400;
+  padding: 5px 0;
+}
+
+.speakingAnswer summary:focus-visible {
+  outline: 2px solid #315f55;
+  outline-offset: 3px;
+}
+
+.speakingAnswer > div {
+  background: #edf4f1;
+  border-left: 3px solid #5c897d;
+  border-radius: 0 9px 9px 0;
+  margin-top: 7px;
+  padding: 12px 14px;
+}
+
+.speakingAnswer p {
+  color: var(--ink);
+}
+
+.speakingAnswer small {
+  color: var(--muted);
+  display: block;
+  line-height: 1.5;
+  margin-top: 9px;
+}
+
 @media (max-width: 680px) {
   .practiceBlock {
     padding: 18px;
   }
 
   .definitionBank {
+    grid-template-columns: 1fr;
+  }
+
+  .contrastWords {
     grid-template-columns: 1fr;
   }
 

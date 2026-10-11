@@ -525,7 +525,7 @@ export default function MaggieLessonOne() {
         </section>
 
         <section className="chapterEnd">
-          <p>Pages 7–10 reviewed on 8 October 2026.</p>
+          <p>Lesson 02 took place on 8 October 2026. Its learning points, including the review of pages 7–10, are included here.</p>
           <CompleteLessonButton studentId="maggie" lessonId="01" />
         </section>
       </div>

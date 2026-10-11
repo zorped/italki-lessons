@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const practiceStorageKey = "english-lessons-maggie-01-practice";
 
 const matches = [
   { term: "core", answer: "B" },
@@ -92,6 +94,32 @@ export function VocabularyPractice() {
   const [choices, setChoices] = useState<Record<number, string>>({});
   const [fillIns, setFillIns] = useState<Record<number, string>>({});
   const [checked, setChecked] = useState({ matching: false, choices: false, gaps: false });
+  const [storageReady, setStorageReady] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        const saved = JSON.parse(localStorage.getItem(practiceStorageKey) || "null");
+        if (saved?.matching) setMatching(saved.matching);
+        if (saved?.choices) setChoices(saved.choices);
+        if (saved?.fillIns) setFillIns(saved.fillIns);
+        if (saved?.checked) setChecked(saved.checked);
+      } catch {
+        // Practice still works if saved browser data is unavailable or malformed.
+      }
+      setStorageReady(true);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    try {
+      localStorage.setItem(practiceStorageKey, JSON.stringify({ matching, choices, fillIns, checked }));
+    } catch {
+      // Keep the exercise usable for the current visit if storage is unavailable.
+    }
+  }, [matching, choices, fillIns, checked, storageReady]);
 
   return (
     <div className="vocabularyPractice">
@@ -219,10 +247,43 @@ export function VocabularyPractice() {
           </div>
         </div>
         <ol>
-          <li>Describe a time you <strong>spread yourself too thin</strong>.</li>
-          <li>Name one <strong>trade-off</strong> you may need to accept to reach a goal.</li>
-          <li>Describe a genuine <strong>breakthrough</strong> in your work or learning.</li>
-          <li>Make one sentence with <strong>crave</strong> and another with <strong>long for</strong>.</li>
+          <li>
+            <details className="speakingAnswer">
+              <summary>Describe a time you <strong>spread yourself too thin</strong>.</summary>
+              <div>
+                <p>I often spread myself too thin. I make lots of plans and schedule too many activities, trying to fit in time for my family, my friends and myself.</p>
+                <small>Useful pattern: <strong>spread myself too thin by trying to do too many things</strong>.</small>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details className="speakingAnswer">
+              <summary>Name one <strong>trade-off</strong> you may need to accept to reach a goal.</summary>
+              <div>
+                <p>When I have free time, I usually arrange activities with my friends or go out with them. Now I am choosing to prioritise English. The trade-off of spending more time learning English is that I have less time to spend with my friends.</p>
+                <small>Another way: <strong>Spending more time learning English means having less time for my friends.</strong></small>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details className="speakingAnswer">
+              <summary>Describe a genuine <strong>breakthrough</strong> in your work or learning.</summary>
+              <div>
+                <p>About five years ago, I took around fifty English classes with a teacher from the Philippines, usually three classes a week. After three or four months of focused study, I made a real breakthrough in my listening. I could understand my customers much better in meetings. Later, I stopped practising regularly, and my listening became rusty. Now I want to practise more than three times a week so I can improve my listening and spoken English again.</p>
+                <small>Useful patterns: <strong>make a breakthrough in</strong> something; <strong>become rusty</strong> when you stop practising.</small>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details className="speakingAnswer">
+              <summary>Make one sentence with <strong>crave</strong> and another with <strong>long for</strong>.</summary>
+              <div>
+                <p><strong>Long for:</strong> I long for a change to my room.</p>
+                <p><strong>Crave:</strong> I crave the chance to see my idol this year.</p>
+                <small><strong>Crave + noun:</strong> “the chance to see my idol.” In everyday conversation, you could also say, “I really want to see my idol this year.”</small>
+              </div>
+            </details>
+          </li>
         </ol>
       </section>
     </div>

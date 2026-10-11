@@ -84,8 +84,28 @@ test("renders Maggie's isolated English notebook", async () => {
   assert.match(html, /Maggie/);
   assert.match(html, /Your English notebook/);
   assert.match(html, /href="\/students\/maggie\/lessons\/01"/);
+  assert.match(html, /href="\/students\/maggie\/lessons\/03"/);
   assert.match(html, /aria-label="Hide sidebar"/);
   assert.doesNotMatch(html, /href="\/"/);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
+});
+
+test("renders Maggie's third lesson review", async () => {
+  const html = await render("/students/maggie/lessons/03");
+  assert.match(html, /Precise words and natural patterns/);
+  assert.match(html, /11 October 2026/);
+  assert.match(html, /merely/);
+  assert.match(html, /barely/);
+  assert.match(html, /hardly/);
+  assert.match(html, /rarely/);
+  assert.match(html, /fate/);
+  assert.match(html, /destiny/);
+  assert.match(html, /luck/);
+  assert.match(html, /chance/);
+  assert.match(html, /much.*many.*little.*few/is);
+  assert.match(html, /continue learning/);
+  assert.match(html, /made a breakthrough in my English listening/);
+  assert.match(html, /Mark lesson complete/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });
 
@@ -128,7 +148,7 @@ test("renders Maggie's first reading review", async () => {
   assert.match(html, /Complete the sentences/);
   assert.match(html, /Make the language yours/);
   assert.match(html, /1\.4/);
-  assert.match(html, /Pages 7–10 reviewed on 8 October 2026/);
+  assert.match(html, /Lesson 02 took place on 8 October 2026/);
   assert.match(html, /Mark lesson complete/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });
