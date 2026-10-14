@@ -3248,3 +3248,97 @@ body:has(.lessonV2) { --paper: #f5f7fb; }
   .pairNote { grid-column: 1; }
   .choiceQuiz, .checkCard { padding-left: 16px; padding-right: 16px; }
 }
+
+/* ---------- Lesson layout v2: lesson 01 and overview ---------- */
+
+/* Pronunciation grouped by focus */
+.soundGroups { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 16px; }
+.soundGroup { background: #ffffff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 10px; }
+.lessonV2 .soundGroup h3 { font-family: var(--font-lora), Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 0 0 2px; }
+.soundGroup ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.soundGroup li { align-items: center; border-top: 1px solid var(--line); display: grid; gap: 4px 12px; grid-template-columns: 36px minmax(0, 7.5rem) minmax(0, 1fr); padding: 8px 0; }
+.soundGroup .listenButton { margin: 0; }
+.sgWord { font-family: var(--font-lora), Georgia, serif; font-size: 1.08rem; font-weight: 600; }
+.sgSound { color: var(--v2-coral-ink); font-size: 0.9rem; letter-spacing: 0.02em; }
+.sgSound b { font-weight: 800; }
+.sgNote { color: var(--muted); font-size: 0.82rem; grid-column: 2 / -1; margin-top: -4px; }
+
+/* Sentence patterns */
+.patternCards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.patternCards article { background: #ffffff; border: 1px solid var(--line); border-left: 4px solid var(--sage); border-radius: 14px; padding: 16px 20px; }
+.patternCards p { margin: 0 !important; }
+.patternChunk { color: var(--v2-sage-ink); font-size: 0.95rem; font-weight: 750; }
+.patternSentence { font-family: var(--font-lora), Georgia, serif; font-size: 1.08rem; line-height: 1.5; margin: 6px 0 !important; }
+.patternUse { color: var(--muted); font-size: 0.85rem; }
+
+/* Reading and practice panels */
+.readingPanel { background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 8px 24px 16px; }
+.readingPanel { overflow-x: clip; } /* hidden note popovers must not widen the page on phones */
+.lessonV2 .readingPaper { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.lessonV2 .vocabularyPractice { display: grid; gap: 14px; }
+.lessonV2 .practiceBlock { background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+
+/* Overview */
+.sectionHead.noNumber { grid-template-columns: minmax(0, 1fr); }
+.continueCard { display: block; transition: transform 120ms; }
+.continueCard:hover, .continueCard:focus-visible { outline: none; transform: translateY(-2px); }
+.continueCard p { margin: 0 0 8px !important; }
+.continueTitle { font-family: var(--font-lora), Georgia, serif; font-size: 1.4rem; line-height: 1.2; }
+.continueCard .continueGo { color: #ffffff; font-weight: 700; margin-top: 4px !important; }
+
+.recurringCards { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.recurringCards article { background: #ffffff; border: 1px solid var(--line); border-top: 4px solid var(--mustard); border-radius: 14px; padding: 16px 18px; }
+.lessonV2 .recurringCards h3 { font-size: 1rem; margin: 0 0 6px; }
+.recurringExample { font-family: var(--font-lora), Georgia, serif; font-size: 1.05rem; margin: 0 0 10px !important; }
+.recurringExample b { color: var(--v2-sage-ink); }
+.recurringLinks { color: var(--muted); font-size: 0.85rem; margin: 0 !important; }
+.recurringLinks a { color: var(--sage); font-weight: 650; text-decoration: underline; text-underline-offset: 2px; }
+
+.lessonCards { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lessonCardV2 { background: #ffffff; border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 16px; grid-template-columns: 48px minmax(0, 1fr); padding: 20px; transition: border-color 120ms, transform 120ms; }
+.lessonCardV2:hover, .lessonCardV2:focus-visible { border-color: var(--sage); outline: none; transform: translateY(-2px); }
+.lessonCardNumber { align-items: center; background: var(--ink); border-radius: 50%; color: #ffffff; display: flex; font-family: var(--font-lora), Georgia, serif; font-size: 1.1rem; height: 48px; justify-content: center; width: 48px; }
+.lessonCardV2 h3 { font-family: var(--font-lora), Georgia, serif; font-size: 1.3rem; font-weight: 500; line-height: 1.2; margin: 0 0 6px; }
+.lessonCardV2 p { color: var(--muted); font-size: 0.92rem; margin: 0 !important; }
+.lessonCardV2 .lessonCardDate { font-size: 0.8rem; margin-bottom: 4px !important; }
+.lessonCardSteps { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 12px 0 0; padding: 0; }
+.lessonCardSteps li { background: var(--paper); border-radius: 999px; color: var(--v2-body); font-size: 0.78rem; padding: 3px 10px; }
+
+@media (max-width: 720px) {
+  .soundGroups, .recurringCards, .lessonCards { grid-template-columns: minmax(0, 1fr); }
+  .readingPanel { padding: 4px 16px 12px; }
+}
+
+/* Practice exercises (VocabularyPractice) in the crisp palette */
+.lessonV2 .practiceHeading > span,
+.lessonV2 .checkPractice { background: var(--sage); }
+.lessonV2 .checkPractice:hover,
+.lessonV2 .checkPractice:focus-visible { background: var(--v2-sage-ink); }
+.lessonV2 .definitionBank li,
+.lessonV2 .choiceRow label { background: var(--paper); }
+.lessonV2 .definitionBank strong,
+.lessonV2 .practiceWordBank span { color: var(--v2-sage-ink); }
+.lessonV2 .choiceRow label.isSelected { background: var(--sage-pale); border-color: var(--sage); }
+.lessonV2 .practiceWordBank span { background: var(--sage-pale); }
+.lessonV2 .matchingRows,
+.lessonV2 .matchingRow,
+.lessonV2 .meaningQuestions > *,
+.lessonV2 .gapQuestions li { border-color: var(--line); }
+.lessonV2 .matchingRow select,
+.lessonV2 .gapQuestions input { border-color: #cbd5e1; color: var(--ink); }
+.lessonV2 .answerCorrect { color: var(--v2-sage-ink); }
+.lessonV2 .answerWrong { color: var(--v2-coral-ink); }
+.lessonV2 .speakingAnswer > div { background: var(--sage-pale); border-left-color: var(--sage); }
+
+/* On phones, reading notes open as a sheet above the bottom navigation instead of beside the word */
+@media (max-width: 600px) {
+  .lessonV2 .readingPopover {
+    bottom: 84px;
+    left: 16px !important;
+    position: fixed;
+    right: 16px !important;
+    top: auto;
+    transform: none !important;
+    width: auto;
+  }
+}

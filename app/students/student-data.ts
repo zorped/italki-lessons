@@ -77,10 +77,10 @@ export const maggie: StudentConfig = {
       date: "7–8 October 2026",
       href: "/students/maggie/lessons/01",
       sections: [
-        { id: "pronunciation", number: "1.1", title: "Pronunciation" },
-        { id: "natural-english", number: "1.2", title: "Natural English" },
-        { id: "reading-in-context", number: "1.3", title: "Reading in context" },
-        { id: "practice", number: "1.4", title: "Practice" },
+        { id: "pronunciation", number: "1", title: "Pronunciation" },
+        { id: "natural-english", number: "2", title: "Your ideas, naturally" },
+        { id: "reading-in-context", number: "3", title: "The article" },
+        { id: "practice", number: "4", title: "Practise the language" },
       ],
     },
     {

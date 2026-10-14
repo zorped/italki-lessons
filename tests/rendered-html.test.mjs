@@ -165,8 +165,8 @@ test("renders Maggie's first reading review", async () => {
   assert.match(html, /Pick the closest meaning/);
   assert.match(html, /Complete the sentences/);
   assert.match(html, /Make the language yours/);
-  assert.match(html, /1\.4/);
-  assert.match(html, /Lesson 02 took place on 8 October 2026/);
+  assert.match(html, /Start here/);
+  assert.match(html, /continued in Lesson 02, 8 October/);
   assert.match(html, /Mark lesson complete/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });

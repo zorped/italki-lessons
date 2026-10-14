@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ContextReading, type ReadingPage } from "../../../../components/ContextReading";
+import { LessonHeader, LessonMap, LessonSection, StartHere, type MapStep } from "../../../../components/LessonBlocks";
 import { CompleteLessonButton } from "../../../../components/LessonProgress";
+import { ListenButton } from "../../../../components/ListenButton";
 import { StudentShell } from "../../../../components/StudentShell";
 import { VocabularyPractice } from "../../../../components/VocabularyPractice";
 import { maggie } from "../../../student-data";
@@ -10,26 +12,64 @@ export const metadata: Metadata = {
   description: "Pronunciation, vocabulary and natural English from Maggie's article discussion.",
 };
 
-const pronunciation = [
-  { word: "luckier", sound: "LUCK-ee-er", note: "Keep the comparative ending: lucky → luckier." },
-  { word: "obsessive", sound: "ub-SESS-iv", note: "Put the main stress on SESS." },
-  { word: "within", sound: "with-IN", note: "Stress the second part." },
-  { word: "period", sound: "PEER-ee-uhd", note: "Keep all three syllables clear." },
-  { word: "thinly", sound: "THIN-lee", note: "Begin with th, then keep the n." },
-  { word: "areas", sound: "AIR-ee-uhz", note: "Finish with a /z/ sound." },
-  { word: "enough", sound: "ih-NUFF", note: "The final letters gh sound like /f/." },
-  { word: "ceiling", sound: "SEE-ling", note: "The first syllable sounds like see." },
-  { word: "consumes", sound: "kuhn-SOOMZ", note: "Keep the final /z/ sound." },
-  { word: "throws", sound: "THROHZ", note: "Keep the final /z/ sound." },
-  { word: "prerequisite", sound: "pree-REK-wuh-zit", note: "Stress REK." },
-  { word: "accept", sound: "uk-SEPT", note: "Stress the second syllable." },
-  { word: "genuine", sound: "JEN-yoo-in", note: "Three clear syllables." },
-  { word: "entirely", sound: "en-TY-er-lee", note: "Stress TY." },
-  { word: "merely", sound: "MEER-lee", note: "Keep the first syllable like mere." },
-  { word: "rare", sound: "RAIR", note: "Use one clear syllable." },
-  { word: "rarely", sound: "RAIR-lee", note: "Build it from rare + -ly." },
-  { word: "area", sound: "AIR-ee-uh", note: "Use three clear syllables; areas ends with /z/." },
+const soundGroups = [
+  {
+    title: "Finish the word",
+    tip: "The ending carries meaning. Don't let it disappear.",
+    words: [
+      { word: "luckier", sound: "LUCK-ee-er", note: "lucky → luckier" },
+      { word: "areas", sound: "AIR-ee-uhz", note: "ends in /z/" },
+      { word: "consumes", sound: "kuhn-SOOMZ", note: "ends in /z/" },
+      { word: "throws", sound: "THROHZ", note: "ends in /z/" },
+      { word: "enough", sound: "ih-NUFF", note: "gh sounds like /f/" },
+    ],
+  },
+  {
+    title: "Stress the right part",
+    tip: "Say the capital-letter part louder and longer.",
+    words: [
+      { word: "obsessive", sound: "ub-SESS-iv", note: "" },
+      { word: "within", sound: "with-IN", note: "" },
+      { word: "prerequisite", sound: "pree-REK-wuh-zit", note: "" },
+      { word: "accept", sound: "uk-SEPT", note: "" },
+      { word: "entirely", sound: "en-TY-er-lee", note: "" },
+    ],
+  },
+  {
+    title: "Every syllable clear",
+    tip: "Don't squeeze the middle together.",
+    words: [
+      { word: "period", sound: "PEER-ee-uhd", note: "3 syllables" },
+      { word: "genuine", sound: "JEN-yoo-in", note: "3 syllables" },
+      { word: "area", sound: "AIR-ee-uh", note: "3 syllables" },
+      { word: "ceiling", sound: "SEE-ling", note: "starts like see" },
+    ],
+  },
+  {
+    title: "Build from a shorter word",
+    tip: "Say the base word first, then add the ending.",
+    words: [
+      { word: "rare", sound: "RAIR", note: "one syllable" },
+      { word: "rarely", sound: "RAIR-lee", note: "rare + ly" },
+      { word: "merely", sound: "MEER-lee", note: "mere + ly" },
+      { word: "thinly", sound: "THIN-lee", note: "thin + ly" },
+    ],
+  },
 ];
+
+const patterns = [
+  { chunk: "spread myself too thin", sentence: "I spread myself too thin across too many activities.", use: "when your attention is divided between too many things" },
+  { chunk: "be good at + noun / -ing", sentence: "I'm still not very good at technical skills or English.", use: "for skills and abilities" },
+  { chunk: "spend time on + activity", sentence: "I want to spend less time on other activities.", use: "for where your time goes" },
+  { chunk: "devote time to + noun / -ing", sentence: "I want to devote most of my time to improving my English and developing my technical skills.", use: "stronger than spend: a deliberate choice" },
+  { chunk: "everyone has", sentence: "Everyone has the same twenty-four hours each day.", use: "everyone takes a singular verb: has, not have" },
+];
+
+function Stressed({ sound }: { sound: string }) {
+  return <>{sound.split("-").map((part, index) => (
+    <span key={index}>{index > 0 && "-"}{part.length > 1 && part === part.toUpperCase() ? <b>{part}</b> : part}</span>
+  ))}</>;
+}
 
 const readingPages: ReadingPage[] = [
   {
@@ -467,68 +507,78 @@ const readingPages: ReadingPage[] = [
   },
 ];
 
+const steps: MapStep[] = [
+  { id: "pronunciation", title: "Pronunciation", kind: "Listen · repeat" },
+  { id: "natural-english", title: "Your ideas, naturally", kind: "Patterns" },
+  { id: "reading-in-context", title: "The article", kind: "Reading" },
+  { id: "practice", title: "Practise the language", kind: "Quiz · speaking" },
+];
+
 export default function MaggieLessonOne() {
   return (
     <StudentShell student={maggie} active="01">
-      <section className="chapterHero">
-        <p className="eyebrow">English · Lesson 01 · 7 October 2026</p>
-        <h1>Effort, focus and trade-offs</h1>
-        <p className="overviewLead">
-          Review the most useful language from <em>Obsessive Effort Can Actually Change Your Life</em>.
-        </p>
-      </section>
+      <article className="lessonV2">
+        <div className="lessonTop">
+          <LessonHeader label="Lesson 01 · 7 October 2026 (continued in Lesson 02, 8 October)" title="Effort, focus and trade-offs">
+            <p>We read <em>Obsessive Effort Can Actually Change Your Life</em> together over two lessons. Here is the language worth keeping from it.</p>
+          </LessonHeader>
+          <StartHere time="about 10 minutes">
+            <p><b>Word endings.</b> Many of your pronunciation notes were about the end of a word: luck<b>ier</b>, area<b>s</b>, consume<b>s</b>, throw<b>s</b>.</p>
+            <p>Do step 1, pressing ▶ and saying each word twice.</p>
+          </StartHere>
+        </div>
 
-      <div className="chapterStack">
-        <section className="chapterCard" id="pronunciation">
-          <p className="sectionKicker">1.1</p>
-          <h2>Pronunciation to revisit</h2>
-          <p className="rule">Say each word slowly once, then use it in a complete sentence. Pay special attention to word endings.</p>
-          <div className="compactGrid pronunciationGrid">
-            {pronunciation.map((item) => (
-              <article key={item.word}>
-                <h3>{item.word}</h3>
-                <strong className="sound">{item.sound}</strong>
-                <p>{item.note}</p>
+        <LessonMap steps={steps} />
+
+        <LessonSection id="pronunciation" number={1} kind="Listen · repeat" title="Pronunciation" lead="The words you practised, grouped by what to pay attention to. Press ▶ to hear the word (in an Indian English voice if your device has one), then say it.">
+          <div className="soundGroups">
+            {soundGroups.map((group) => (
+              <div className="soundGroup" key={group.title}>
+                <h3>{group.title}</h3>
+                <p className="hint">{group.tip}</p>
+                <ul>
+                  {group.words.map((item) => (
+                    <li key={item.word}>
+                      <ListenButton text={item.word} />
+                      <span className="sgWord">{item.word}</span>
+                      <span className="sgSound"><Stressed sound={item.sound} /></span>
+                      {item.note && <span className="sgNote">{item.note}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="calloutNote"><span className="noteLabel">Final-s check</span><em>areas</em>, <em>consumes</em> and <em>throws</em> finish with a clear /z/ sound. Do not let the ending disappear.</p>
+        </LessonSection>
+
+        <LessonSection id="natural-english" number={2} kind="Patterns" title="Your ideas, naturally" lead="These are your own ideas from the discussion. Learn the highlighted chunk, then change the details to talk about your life.">
+          <div className="patternCards">
+            {patterns.map((item) => (
+              <article key={item.chunk}>
+                <p className="patternChunk">{item.chunk}</p>
+                <p className="patternSentence">{item.sentence}</p>
+                <p className="patternUse">{item.use}</p>
               </article>
             ))}
           </div>
-          <aside className="chapterNote">
-            <strong>Final-s check:</strong> <em>areas</em>, <em>consumes</em> and <em>throws</em> finish with a clear /z/ sound. Do not let the ending disappear.
-          </aside>
-        </section>
+        </LessonSection>
 
-        <section className="chapterCard" id="natural-english">
-          <p className="sectionKicker">1.2</p>
-          <h2>Make your ideas sound more natural</h2>
-          <p className="rule">Learn the complete sentence patterns, then change the details to fit your own situation.</p>
-          <div className="correctionList">
-            <article><p className="right">I spread myself too thin across too many activities.</p><p>Use <strong>spread myself too thin</strong> when your attention is divided.</p></article>
-            <article><p className="right">I&apos;m still not very good at technical skills or English.</p><p>Use <strong>be good at</strong> followed by a noun or an -ing form.</p></article>
-            <article><p className="right">I want to spend less time on other activities.</p><p>Use <strong>spend time on</strong> an activity.</p></article>
-            <article><p className="right">I want to devote most of my time to improving my English and developing my technical skills.</p><p>After <strong>devote time to</strong>, use a noun or an -ing form.</p></article>
-            <article><p className="right">Everyone has the same twenty-four hours each day.</p><p>Use <strong>the same</strong>, and remember the verb <strong>has</strong> after <em>everyone</em>.</p></article>
+        <LessonSection id="reading-in-context" number={3} kind="Reading" title="Read with help in context" lead="Read normally. Hover over a highlight, or tap it on a phone, to open a note. The colour shows how useful the word is to learn first.">
+          <div className="readingPanel">
+            <ContextReading title="Obsessive Effort Can Actually Change Your Life" pages={readingPages} />
           </div>
-        </section>
+        </LessonSection>
 
-        <section className="chapterCard readingContextCard" id="reading-in-context">
-          <p className="sectionKicker">1.3</p>
-          <h2>Read with help in context</h2>
-          <p className="rule">Read normally. Hover over a highlight—or tap it on a phone—to open a note. Colour shows how useful the language is to learn first.</p>
-          <ContextReading title="Obsessive Effort Can Actually Change Your Life" pages={readingPages} />
-        </section>
-
-        <section className="chapterCard" id="practice">
-          <p className="sectionKicker">1.4</p>
-          <h2>Practise the language</h2>
-          <p className="rule">Return to the highlighted reading whenever you need a clue, then try again without looking.</p>
+        <LessonSection id="practice" number={4} kind="Quiz · speaking" title="Practise the language" lead="Go back to the reading if you need a clue, then try again without looking. Your answers are saved on this device.">
           <VocabularyPractice />
-        </section>
+        </LessonSection>
 
-        <section className="chapterEnd">
-          <p>Lesson 02 took place on 8 October 2026. Its learning points, including the review of pages 7–10, are included here.</p>
+        <footer className="lessonClose">
+          <p>Before our next lesson: read the article aloud once more, listening for your word endings.</p>
           <CompleteLessonButton studentId="maggie" lessonId="01" />
-        </section>
-      </div>
+        </footer>
+      </article>
     </StudentShell>
   );
 }
