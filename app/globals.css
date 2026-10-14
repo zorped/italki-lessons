@@ -3111,7 +3111,7 @@ body:has(.lessonV2) { --paper: #f5f7fb; }
 }
 
 /* Top: title beside the start-here card */
-.lessonTop { align-items: end; display: grid; gap: 20px 40px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+.lessonTop { align-items: start; display: grid; gap: 20px 40px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
 .lessonTop .lessonHeader { margin-bottom: 0; }
 .lessonTop .lessonIntro p { margin-bottom: 0 !important; }
 .startHere {
