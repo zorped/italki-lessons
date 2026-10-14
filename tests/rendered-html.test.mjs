@@ -104,7 +104,25 @@ test("renders Maggie's third lesson review", async () => {
   assert.match(html, /chance/);
   assert.match(html, /much.*many.*little.*few/is);
   assert.match(html, /continue learning/);
-  assert.match(html, /made a breakthrough in my English listening/);
+  assert.match(html, /a breakthrough in my English listening/);
+  assert.match(html, /Start here/);
+  assert.match(html, /Say it naturally/);
+  assert.match(html, /a lot of/);
+  assert.match(html, /Mark lesson complete/);
+  assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
+});
+
+test("renders Maggie's fourth lesson review", async () => {
+  const html = await render("/students/maggie/lessons/04");
+  assert.match(html, /Understanding workplace emails/);
+  assert.match(html, /13 October 2026/);
+  assert.match(html, /Start here/);
+  for (const word of ["briefing", "beyond", "recurring", "spillover", "bandwidth", "scenarios", "technology", "modernizing", "adjective"]) {
+    assert.match(html, new RegExp(word));
+  }
+  assert.match(html, /last Friday/);
+  assert.match(html, /so that/);
+  assert.match(html, /such as/);
   assert.match(html, /Mark lesson complete/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });
