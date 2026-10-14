@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ChoiceQuiz, type ChoiceItem } from "../../../../components/ChoiceQuiz";
-import { FixList, LessonHeader, LessonSection, SpeakTask, StartHere, type FixItem } from "../../../../components/LessonBlocks";
+import { FixList, LessonHeader, LessonMap, LessonSection, SpeakTask, StartHere, type FixItem, type MapStep } from "../../../../components/LessonBlocks";
 import { CompleteLessonButton } from "../../../../components/LessonProgress";
 import { ListenButton } from "../../../../components/ListenButton";
 import { StudentShell } from "../../../../components/StudentShell";
@@ -11,8 +11,11 @@ export const metadata: Metadata = {
   description: "Workplace vocabulary, speaking feedback and pronunciation from Maggie's fourth lesson.",
 };
 
-const firstChecks: FixItem[] = [
+const pastCheck: FixItem[] = [
   { said: "I also have a meeting with customers last Friday.", natural: <>I also <b>had</b> a meeting with customers last Friday.</>, why: "Last Friday is in the past, so the verb is too. Find the time phrase first, then check the verb." },
+];
+
+const pluralCheck: FixItem[] = [
   { said: "Some word… two sentence…", natural: <>some <b>words</b> · two <b>sentences</b></>, why: "After two, three, many, some or several, add -s." },
   { said: "Another problems.", natural: <>another <b>problem</b></>, why: "Another means one more, so the noun stays singular." },
 ];
@@ -28,10 +31,10 @@ const laterChecks: FixItem[] = [
 ];
 
 const words = [
-  { word: "briefing", meaning: "a short meeting or message that gives people the information they need before something happens", contrast: "a debriefing happens after, to review what happened" },
-  { word: "beyond", meaning: "further than a point or limit. In a workflow, “approved and beyond” means that stage and every stage after it", contrast: "within = inside the limit" },
-  { word: "recurring", meaning: "happening again and again, with breaks in between", contrast: "ongoing = continuing without stopping" },
-  { word: "spillover", meaning: "unfinished work from one sprint that moves into the next", contrast: "the backlog = all the work still waiting to be planned" },
+  { word: "briefing", meaning: "a short meeting or message that gives people the information they need before something happens", partner: "debriefing", partnerMeaning: "happens after, to review what happened" },
+  { word: "beyond", meaning: "further than a point or limit. In a workflow, “approved and beyond” means that stage and every stage after it", partner: "within", partnerMeaning: "inside the limit" },
+  { word: "recurring", meaning: "happening again and again, with breaks in between", partner: "ongoing", partnerMeaning: "continuing without stopping" },
+  { word: "spillover", meaning: "unfinished work from one sprint that moves into the next", partner: "backlog", partnerMeaning: "all the work still waiting to be planned" },
 ];
 
 const wordQuiz: ChoiceItem[] = [
@@ -59,53 +62,81 @@ const pronunciation = [
   { word: "real", sound: <><b>REE</b>-uhl</>, tip: "Glide from ee into l. One or two syllables are both fine.", example: "This is a real opportunity." },
 ];
 
+const steps: MapStep[] = [
+  { id: "speaking-checks", title: "Two speaking checks", kind: "Fix it" },
+  { id: "highlighted-words", title: "Your highlighted words", kind: "Words · quiz" },
+  { id: "bandwidth", title: "Saying no politely", kind: "Builder" },
+  { id: "workplace-wording", title: "Everyday vs work", kind: "Compare" },
+  { id: "sentence-starts", title: "Starting a sentence", kind: "Patterns" },
+  { id: "pronunciation", title: "Pronunciation", kind: "Listen" },
+  { id: "practice", title: "Say it out loud", kind: "Speaking" },
+];
+
 export default function MaggieLessonFour() {
   return (
     <StudentShell student={maggie} active="04">
       <article className="lessonV2">
-        <LessonHeader label="Lesson 04 · 13 October 2026" title="Understanding workplace emails">
-          <p>You brought emails from work and marked the words you wanted to understand. You also asked for feedback on how you speak, not only how you read, so that comes first.</p>
-        </LessonHeader>
+        <div className="lessonTop">
+          <LessonHeader label="Lesson 04 · 13 October 2026" title="Understanding workplace emails">
+            <p>You brought emails from work and marked the words you wanted to understand. You also asked for feedback on how you speak, not only how you read, so that comes first.</p>
+          </LessonHeader>
+          <StartHere time="about 10 minutes">
+            <p><b>Two checks when you talk about the past:</b> is the verb in the past? Is the noun plural after a number?</p>
+            <p>Do step 1, then speaking task 1 twice.</p>
+          </StartHere>
+        </div>
 
-        <StartHere time="about 10 minutes">
-          <p><b>Two checks when you talk about the past:</b> is the verb in the past, and is the noun plural after a number? Read section 1, then do speaking task 1 twice.</p>
-        </StartHere>
+        <LessonMap steps={steps} />
 
-        <LessonSection id="speaking-checks" title="1. Two things to check when you speak" lead="Try to correct each sentence out loud before you open it. These are from our conversation, tidied slightly from the recording.">
-          <FixList items={firstChecks} />
+        <LessonSection id="speaking-checks" number={1} kind="Fix it" title="Two things to check when you speak" lead="Correct each sentence out loud before you open it. These are from our conversation, tidied slightly from the recording.">
+          <div className="split">
+            <div className="checkCard">
+              <p className="checkLabel">Check 1</p>
+              <h3>Past time → past verb</h3>
+              <FixList items={pastCheck} />
+            </div>
+            <div className="checkCard">
+              <p className="checkLabel">Check 2</p>
+              <h3>Number → plural noun</h3>
+              <FixList items={pluralCheck} />
+            </div>
+          </div>
           <h3>Later, one at a time</h3>
           <p className="hint">Don&apos;t try to fix all of these at once. Pick one per week.</p>
-          <FixList items={laterChecks} />
+          <FixList items={laterChecks} layout="grid" />
         </LessonSection>
 
-        <LessonSection id="highlighted-words" title="2. The words you highlighted" lead="Each word has a partner that people often mix it up with. Knowing the pair is what makes the meaning stick.">
-          <dl className="wordList">
+        <LessonSection id="highlighted-words" number={2} kind="Words · quiz" title="The words you highlighted" lead="Each word has a partner that people often mix it up with. Knowing the pair is what makes the meaning stick.">
+          <div className="pairCards">
             {words.map((item) => (
-              <div key={item.word}>
-                <dt>{item.word}</dt>
-                <dd>{item.meaning}<span>Compare: {item.contrast}</span></dd>
-              </div>
+              <article key={item.word}>
+                <p className="pairHead"><b>{item.word}</b><span>vs</span><b className="pairOther">{item.partner}</b></p>
+                <p>{item.meaning}</p>
+                <p className="pairContrast"><b>{item.partner}</b>: {item.partnerMeaning}</p>
+              </article>
             ))}
-          </dl>
-          <h3>Check yourself</h3>
-          <ChoiceQuiz id="maggie-04-words" items={wordQuiz} />
+          </div>
+          <ChoiceQuiz id="maggie-04-words" title="Check yourself" items={wordQuiz} layout="grid" />
         </LessonSection>
 
-        <LessonSection id="bandwidth" title="3. Saying no politely: bandwidth" lead="At work, bandwidth means the time and attention you have available. Here is your idea from the lesson, in three pieces:">
-          <ol className="chunkList">
+        <LessonSection id="bandwidth" number={3} kind="Sentence builder" title="Saying no politely: bandwidth" lead="At work, bandwidth means the time and attention you have available. Here is your idea from the lesson, in three pieces:">
+          <ol className="chunkRow">
             <li><b>Given that I already have a lot of work,</b><span>the reason</span></li>
             <li><b>taking on a new task</b><span>take on = accept responsibility for</span></li>
             <li><b>would be beyond my bandwidth.</b><span>more than I can handle</span></li>
           </ol>
-          <p>Shorter and just as natural: <q>I don&apos;t have the bandwidth to take on a new task right now.</q></p>
-          <p>The opposite: <q>That&apos;s <b>within</b> our bandwidth. We can do it this week.</q></p>
+          <div className="split">
+            <p className="calloutNote"><span className="noteLabel">Shorter</span>I don&apos;t have the bandwidth to take on a new task right now.</p>
+            <p className="calloutNote"><span className="noteLabel">Opposite</span>That&apos;s <b>within</b> our bandwidth. We can do it this week.</p>
+          </div>
         </LessonSection>
 
-        <LessonSection id="workplace-wording" title="4. Everyday words, work words" lead="Both columns are correct English. The work version is more precise, not more correct. Simple English is always fine in an email.">
+        <LessonSection id="workplace-wording" number={4} kind="Compare" title="Everyday words, work words" lead="Both are correct English. The work version is more precise, not more correct. Simple English is always fine in an email.">
           <ul className="pairList">
             {wording.map((item) => (
               <li key={item.everyday}>
                 <span className="pairEveryday">{item.everyday}</span>
+                <span className="pairArrow" aria-hidden="true">→</span>
                 <span className="pairWork">{item.work}</span>
                 {item.note && <span className="pairNote">{item.note}</span>}
               </li>
@@ -113,20 +144,27 @@ export default function MaggieLessonFour() {
           </ul>
         </LessonSection>
 
-        <LessonSection id="sentence-starts" title="5. Starting a sentence" lead="You said many of your sentences start with I or We. That's fine. When you want variety, start with the purpose, the benefit or the situation:">
-          <ul className="starterList">
-            <li><b>The purpose of this meeting is</b> to agree on the next steps.</li>
-            <li><b>The main benefit of planning ahead is</b> that we can review requests earlier.</li>
-            <li><b>Given our current workload,</b> we need to prioritise urgent requests.</li>
-          </ul>
-          <h3>so that or such as?</h3>
-          <dl className="wordList">
-            <div><dt>so that</dt><dd>gives the reason or goal<span>Review the list early <b>so that</b> we can prepare.</span></dd></div>
-            <div><dt>such as</dt><dd>gives examples<span>Review urgent requests, <b>such as</b> system fixes.</span></dd></div>
-          </dl>
+        <LessonSection id="sentence-starts" number={5} kind="Patterns" title="Starting a sentence" lead="You said many of your sentences start with I or We. That's fine. When you want variety, start with the purpose, the benefit or the situation.">
+          <div className="split">
+            <div>
+              <h3 className="panelTitle">Three ways to begin</h3>
+              <ul className="starterList">
+                <li><b>The purpose of this meeting is</b> to agree on the next steps.</li>
+                <li><b>The main benefit of planning ahead is</b> that we can review requests earlier.</li>
+                <li><b>Given our current workload,</b> we need to prioritise urgent requests.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="panelTitle">so that or such as?</h3>
+              <dl className="wordList">
+                <div><dt>so that</dt><dd>gives the reason or goal<span>Review the list early <b>so that</b> we can prepare.</span></dd></div>
+                <div><dt>such as</dt><dd>gives examples<span>Review urgent requests, <b>such as</b> system fixes.</span></dd></div>
+              </dl>
+            </div>
+          </div>
         </LessonSection>
 
-        <LessonSection id="pronunciation" title="6. Pronunciation" lead="Bold shows the stressed part. Press ▶ to hear it (in an Indian English voice if your device has one), say the word, then read the sentence.">
+        <LessonSection id="pronunciation" number={6} kind="Listen · repeat" title="Pronunciation" lead="Bold shows the stressed part. Press ▶ to hear it (in an Indian English voice if your device has one), say the word, then read the sentence.">
           <ul className="soundList">
             {pronunciation.map((item) => (
               <li key={item.word}>
@@ -140,7 +178,7 @@ export default function MaggieLessonFour() {
           </ul>
         </LessonSection>
 
-        <LessonSection id="practice" title="7. Say it out loud" lead="Speak first. Open the example only after you've tried.">
+        <LessonSection id="practice" number={7} kind="Speaking" title="Say it out loud" lead="Speak first. Open the example only after you've tried.">
           <ol className="speakTasks">
             <SpeakTask number={1} model="Last Friday I had a meeting with two customers. They asked several questions about delivery times. They were a little confused about the new process, so I explained it again and sent them the details.">Tell me about last Friday&apos;s customer meeting. Then tell it again, fixing only <b>past tense</b> and <b>plurals</b>.</SpeakTask>
             <SpeakTask number={2} model="Quick briefing on Friday's shipment: Anna will prepare the documents by Wednesday, and I'll confirm the delivery slot with the carrier on Thursday.">Give a 20-second <b>briefing</b> on a task: what needs to happen, who does it, and by when.</SpeakTask>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ChoiceQuiz, type ChoiceItem } from "../../../../components/ChoiceQuiz";
-import { FixList, LessonHeader, LessonSection, SpeakTask, StartHere, type FixItem } from "../../../../components/LessonBlocks";
+import { FixList, LessonHeader, LessonMap, LessonSection, SpeakTask, StartHere, type FixItem, type MapStep } from "../../../../components/LessonBlocks";
 import { CompleteLessonButton } from "../../../../components/LessonProgress";
 import { StudentShell } from "../../../../components/StudentShell";
 import { maggie } from "../../../student-data";
@@ -54,55 +54,74 @@ const moreWords = [
   { group: "long for · crave · want · be eager to", lines: [["long for", "+ noun; want something for a long time", "I long for a change."], ["crave", "+ noun; a strong physical or emotional desire", "I crave some quiet time."], ["want", "neutral, always safe", "I want to improve my listening."], ["be eager to", "+ verb; excited to do something", "I'm eager to meet my idol."]], tip: "Long for + noun, long to + verb. Crave never takes to + verb." },
 ];
 
+const steps: MapStep[] = [
+  { id: "quantity", title: "Much or many?", kind: "Rule · quiz" },
+  { id: "verb-patterns", title: "Words that go together", kind: "Fix it" },
+  { id: "past-story", title: "A story in the past", kind: "Model" },
+  { id: "similar-words", title: "Similar words", kind: "Quiz" },
+  { id: "practice", title: "Say it out loud", kind: "Speaking" },
+];
+
 export default function MaggieLessonThree() {
   return (
     <StudentShell student={maggie} active="03">
       <article className="lessonV2">
-        <LessonHeader label="Lesson 03 · 11 October 2026" title="Precise words and natural patterns">
-          <p>You talked about your English study, your work and your free time. These are the patterns that came up most, in the order I&apos;d practise them.</p>
-        </LessonHeader>
+        <div className="lessonTop">
+          <LessonHeader label="Lesson 03 · 11 October 2026" title="Precise words and natural patterns">
+            <p>You talked about your English study, your work and your free time. These are the patterns that came up most, in the order I&apos;d practise them.</p>
+          </LessonHeader>
+          <StartHere time="about 10 minutes">
+            <p><b>Much or many? Little or few?</b> This came up more than anything else in our conversation.</p>
+            <p>Do step 1, then say the five quiz sentences aloud.</p>
+          </StartHere>
+        </div>
 
-        <StartHere time="about 10 minutes">
-          <p><b>Much or many? Little or few?</b> This came up more than anything else in our conversation. Do section 1, then say the five quiz sentences aloud.</p>
-        </StartHere>
+        <LessonMap steps={steps} />
 
-        <LessonSection id="quantity" title="1. Much or many? Little or few?" lead="First ask: can I count it? One task, two tasks: yes. One information, two informations: no.">
-          <table className="ruleTable">
-            <thead><tr><th scope="col"></th><th scope="col">Can count<br /><span>tasks, meetings, delays</span></th><th scope="col">Can&apos;t count<br /><span>work, time, information</span></th></tr></thead>
-            <tbody>
-              <tr><th scope="row">a large amount</th><td>many tasks</td><td>much work</td></tr>
-              <tr><th scope="row">a small amount</th><td>a few tasks</td><td>a little time</td></tr>
-              <tr><th scope="row">comparing</th><td>fewer meetings</td><td>less time</td></tr>
-              <tr><th scope="row">either</th><td colSpan={2}><b>a lot of</b> tasks · <b>a lot of</b> work</td></tr>
-            </tbody>
-          </table>
-
-          <h3>Your sentences</h3>
-          <p className="hint">Try to correct each one out loud before you open it.</p>
-          <FixList items={quantityFixes} />
-
-          <h3>Check yourself</h3>
-          <ChoiceQuiz id="maggie-03-quantity" items={quantityQuiz} />
+        <LessonSection id="quantity" number={1} kind="Rule · fix · quiz" title="Much or many? Little or few?" lead="First ask: can I count it? One task, two tasks: yes. One information, two informations: no.">
+          <div className="split">
+            <div>
+              <div className="ruleTiles">
+                <div className="ruleTile tileCount">
+                  <p className="tileHead">Can count</p>
+                  <p className="tileNouns">tasks · meetings · delays</p>
+                  <ul><li><b>many</b> tasks</li><li><b>a few</b> tasks</li><li><b>fewer</b> meetings</li></ul>
+                </div>
+                <div className="ruleTile tileMass">
+                  <p className="tileHead">Can&apos;t count</p>
+                  <p className="tileNouns">work · time · information</p>
+                  <ul><li><b>much</b> work</li><li><b>a little</b> time</li><li><b>less</b> time</li></ul>
+                </div>
+                <div className="ruleTile tileBoth"><b>a lot of</b> works with both: a lot of tasks, a lot of work.</div>
+              </div>
+            </div>
+            <div>
+              <h3 className="panelTitle">Your sentences</h3>
+              <p className="hint">Correct each one out loud, then open it.</p>
+              <FixList items={quantityFixes} />
+            </div>
+          </div>
+          <ChoiceQuiz id="maggie-03-quantity" title="Check yourself" items={quantityQuiz} layout="grid" />
         </LessonSection>
 
-        <LessonSection id="verb-patterns" title="2. Words that go together" lead="Some verbs need -ing after them, some need a noun, and some always take the same partner. Learn them as one piece.">
-          <FixList items={verbFixes} />
+        <LessonSection id="verb-patterns" number={2} kind="Fix it" title="Words that go together" lead="Some verbs need -ing after them, some need a noun, and some always take the same partner. Learn them as one piece.">
+          <FixList items={verbFixes} layout="grid" />
         </LessonSection>
 
-        <LessonSection id="past-story" title="3. Telling a story about the past" lead="When you described how you started learning English, you moved between present and past. Put a time phrase at the start, then keep every verb in the past.">
-          <blockquote className="modelText">
-            <p><mark>Five years ago</mark>, I <b>enrolled</b> in several English classes. <mark>After a few months</mark>, I <b>realised</b> I <b>had made</b> a breakthrough in my English listening. <mark>Later</mark>, I <b>didn&apos;t continue</b> learning regularly.</p>
-          </blockquote>
-          <p><b>Had made</b> shows something happened <i>before</i> another past moment: the breakthrough came first, then you realised it.</p>
+        <LessonSection id="past-story" number={3} kind="Model" title="Telling a story about the past" lead="When you described how you started learning English, you moved between present and past. Put a time phrase at the start, then keep every verb in the past.">
+          <ol className="timeline">
+            <li><span className="timeMark">Five years ago</span><p>I <b>enrolled</b> in several English classes.</p></li>
+            <li><span className="timeMark">After a few months</span><p>I <b>realised</b> I <b>had made</b> a breakthrough in my English listening.</p></li>
+            <li><span className="timeMark">Later</span><p>I <b>didn&apos;t continue</b> learning regularly.</p></li>
+          </ol>
+          <p className="calloutNote"><b>Had made</b> shows something happened <i>before</i> another past moment: the breakthrough came first, then you realised it.</p>
         </LessonSection>
 
-        <LessonSection id="similar-words" title="4. Similar words" lead="Choose the word that fits. The explanation appears after you answer.">
-          <h3>merely · barely · hardly · rarely</h3>
-          <ChoiceQuiz id="maggie-03-degree" items={degreeQuiz} />
-
-          <h3>setback · obstacle · delay · failure</h3>
-          <ChoiceQuiz id="maggie-03-problems" items={problemQuiz} />
-
+        <LessonSection id="similar-words" number={4} kind="Quiz" title="Similar words" lead="Choose the word that fits. The explanation appears after you answer.">
+          <div className="split">
+            <ChoiceQuiz id="maggie-03-degree" title="merely · barely · hardly · rarely" items={degreeQuiz} />
+            <ChoiceQuiz id="maggie-03-problems" title="setback · obstacle · delay · failure" items={problemQuiz} />
+          </div>
           <h3>More groups from this lesson</h3>
           <p className="hint">For reference. Read the example, not just the meaning.</p>
           <div className="wordGroups">
@@ -120,7 +139,7 @@ export default function MaggieLessonThree() {
           </div>
         </LessonSection>
 
-        <LessonSection id="practice" title="5. Say it out loud" lead="Speak for 30–60 seconds on each. Record yourself if you can, then listen for much/many and past tense.">
+        <LessonSection id="practice" number={5} kind="Speaking" title="Say it out loud" lead="Speak for 30–60 seconds on each. Record yourself if you can, then listen for much/many and past tense.">
           <ol className="speakTasks">
             <SpeakTask number={1} model="Last week I had too many meetings and too much paperwork, so I had only a little time to plan. Next week I want fewer meetings.">Describe a busy week at work. Use <b>many</b>, <b>much</b>, <b>a little</b> and <b>fewer</b>.</SpeakTask>
             <SpeakTask number={2} model="Five years ago, I enrolled in an English class. After a few months, I realised I had made a breakthrough in my listening. Later, I got busy and didn't continue learning regularly.">Tell your English-learning story again. Start with <b>Five years ago</b> and keep it in the past.</SpeakTask>
@@ -130,7 +149,7 @@ export default function MaggieLessonThree() {
         </LessonSection>
 
         <footer className="lessonClose">
-          <p>Before our next lesson: open section 1 again and redo the quiz without looking at the table.</p>
+          <p>Before our next lesson: open step 1 again and redo the quiz without looking at the rule.</p>
           <CompleteLessonButton studentId="maggie" lessonId="03" />
         </footer>
       </article>

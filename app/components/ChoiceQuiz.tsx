@@ -19,7 +19,7 @@ function readSaved(key: string): Record<number, string> {
   }
 }
 
-export function ChoiceQuiz({ id, items }: { id: string; items: ChoiceItem[] }) {
+export function ChoiceQuiz({ id, items, title, layout = "list" }: { id: string; items: ChoiceItem[]; title?: string; layout?: "list" | "grid" }) {
   const storageKey = `english-lessons-quiz-${id}`;
   const [picked, setPicked] = useState<Record<number, string>>({});
 
@@ -49,7 +49,8 @@ export function ChoiceQuiz({ id, items }: { id: string; items: ChoiceItem[] }) {
   const correct = items.filter((item, index) => item.answers.includes(picked[index])).length;
 
   return (
-    <div className="choiceQuiz">
+    <div className={layout === "grid" ? "choiceQuiz choiceGrid" : "choiceQuiz"}>
+      {title && <h3 className="choiceTitle">{title}</h3>}
       <ol>
         {items.map((item, index) => {
           const choice = picked[index];

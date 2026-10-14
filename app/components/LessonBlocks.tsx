@@ -19,11 +19,38 @@ export function StartHere({ time, children }: { time: string; children: ReactNod
   );
 }
 
-export function LessonSection({ id, title, lead, children }: { id: string; title: string; lead?: ReactNode; children: ReactNode }) {
+export type MapStep = { id: string; title: string; kind: string };
+
+/** A clickable overview of the lesson path, showing what kind of activity each step is. */
+export function LessonMap({ steps }: { steps: MapStep[] }) {
+  return (
+    <nav className="lessonMap" aria-label="Lesson path">
+      <ol>
+        {steps.map((step, index) => (
+          <li key={step.id}>
+            <a href={`#${step.id}`}>
+              <span className="mapNumber">{index + 1}</span>
+              <span className="mapTitle">{step.title}</span>
+              <span className="mapKind">{step.kind}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+export function LessonSection({ id, number, kind, title, lead, children }: { id: string; number: number; kind: string; title: string; lead?: ReactNode; children: ReactNode }) {
   return (
     <section className="lessonSection" id={id}>
-      <h2>{title}</h2>
-      {lead && <p className="sectionLead">{lead}</p>}
+      <div className="sectionHead">
+        <span className="sectionNumber" aria-hidden="true">{number}</span>
+        <div>
+          <p className="sectionKind">{kind}</p>
+          <h2>{title}</h2>
+          {lead && <p className="sectionLead">{lead}</p>}
+        </div>
+      </div>
       {children}
     </section>
   );
@@ -32,9 +59,9 @@ export function LessonSection({ id, title, lead, children }: { id: string; title
 export type FixItem = { said: string; natural: ReactNode; why?: ReactNode };
 
 /** Learner sentence first; the natural version stays hidden until she has tried. */
-export function FixList({ items }: { items: FixItem[] }) {
+export function FixList({ items, layout = "list" }: { items: FixItem[]; layout?: "list" | "grid" }) {
   return (
-    <ul className="fixList">
+    <ul className={layout === "grid" ? "fixList fixGrid" : "fixList"}>
       {items.map((item) => (
         <li key={item.said}>
           <p className="fixSaid">{item.said}</p>
