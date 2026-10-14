@@ -2857,9 +2857,24 @@ a {
 
 /* ---------- Lesson layout v2: one reading column, try-then-check ---------- */
 
+/* Crisp palette for v2 lesson pages: white page, near-black text, saturated accents. */
+body:has(.lessonV2) {
+  --paper: #ffffff;
+  --paper-light: #f3f6fa;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --sage: #047857;
+  --sage-pale: #d1fae5;
+  --coral: #dc2626;
+  --mustard: #f59e0b;
+}
+
 .lessonV2 {
-  --v2-sage-ink: #2f5a4a;
-  --v2-coral-ink: #9a3a28;
+  --v2-sage-ink: #065f46;
+  --v2-coral-ink: #b91c1c;
+  --v2-body: #1e293b;
+  color: var(--v2-body);
   max-width: 720px;
   margin: 0 auto;
   padding-bottom: 32px;
@@ -2880,11 +2895,11 @@ a {
   line-height: 1.1;
   margin: 0 0 14px;
 }
-.lessonIntro p { font-size: 1.08rem; color: #333c3a; max-width: 62ch; }
+.lessonIntro p { font-size: 1.08rem; color: var(--v2-body); max-width: 62ch; }
 
 .startHere {
-  background: var(--paper-light);
-  border-left: 3px solid var(--sage);
+  background: #ecfdf5;
+  border-left: 4px solid var(--sage);
   border-radius: 0 10px 10px 0;
   padding: 16px 20px 6px;
   margin-bottom: 8px;
@@ -2909,7 +2924,7 @@ a {
   margin: 0 0 10px;
 }
 .lessonSection h3 { font-size: 1rem; font-weight: 700; margin: 30px 0 8px; }
-.sectionLead { color: #333c3a; max-width: 62ch; }
+.sectionLead { color: var(--v2-body); max-width: 62ch; }
 .lessonV2 .hint { color: var(--muted); font-size: 0.9rem; margin-top: -4px; }
 
 /* Rule table */
@@ -2947,13 +2962,13 @@ a {
 .choiceQuiz li { counter-increment: q; padding: 12px 0 12px 30px; position: relative; border-bottom: 1px solid var(--line); }
 .choiceQuiz li::before { content: counter(q); color: var(--muted); font-size: 0.85rem; left: 0; position: absolute; top: 14px; }
 .choiceSentence { font-family: var(--font-lora), Georgia, serif; font-size: 1.05rem; margin: 0 0 8px !important; }
-.choiceGap { border-bottom: 2px solid var(--ink); display: inline-block; min-width: 3.5em; padding: 0 3px; text-align: center; }
+.choiceGap { border-bottom: 2px solid #94a3b8; display: inline-block; min-width: 3.5em; padding: 0 3px; text-align: center; }
 .choiceGap.isRight { border-color: var(--sage); color: var(--v2-sage-ink); font-weight: 600; }
 .choiceGap.isWrong { border-color: var(--sage); color: var(--v2-sage-ink); font-weight: 600; }
 .choiceOptions { display: flex; flex-wrap: wrap; gap: 8px; }
 .choiceOptions button {
-  background: var(--paper-light);
-  border: 1px solid var(--line);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 999px;
   color: var(--ink);
   cursor: pointer;
@@ -2974,7 +2989,7 @@ a {
 /* Model text */
 .modelText { border-left: 3px solid var(--mustard); margin: 16px 0; padding: 4px 0 4px 18px; }
 .modelText p { font-family: var(--font-lora), Georgia, serif; font-size: 1.1rem; line-height: 1.7; margin: 0 !important; }
-.modelText mark { background: #f6e6b8; border-radius: 2px; padding: 0 1px; }
+.modelText mark { background: #fde68a; border-radius: 2px; padding: 0 1px; }
 
 /* Word lists */
 .wordList { margin: 12px 0 0; }
@@ -2998,7 +3013,7 @@ a {
 
 /* Bandwidth chunks */
 .chunkList { list-style: none; margin: 14px 0 18px; padding: 0; }
-.chunkList li { border-left: 3px solid var(--sage-pale); padding: 4px 0 4px 14px; }
+.chunkList li { border-left: 3px solid var(--sage); padding: 4px 0 4px 14px; }
 .chunkList li + li { margin-top: 6px; }
 .chunkList b { display: block; font-family: var(--font-lora), Georgia, serif; font-size: 1.08rem; font-weight: 600; }
 .chunkList span { color: var(--muted); font-size: 0.85rem; }
@@ -3026,10 +3041,10 @@ a {
 .soundExample em { color: var(--muted); display: block; font-size: 0.85rem; font-style: normal; }
 .listenButton {
   align-items: center;
-  background: var(--paper-light);
-  border: 1px solid var(--line);
+  background: var(--sage);
+  border: 1px solid var(--sage);
   border-radius: 50%;
-  color: var(--sage);
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   flex: 0 0 auto;
@@ -3040,7 +3055,7 @@ a {
   padding-left: 2px;
   width: 36px;
 }
-.listenButton:hover, .listenButton:focus-visible { border-color: var(--sage); outline: none; box-shadow: 0 0 0 2px var(--sage-pale); }
+.listenButton:hover, .listenButton:focus-visible { background: var(--v2-sage-ink); outline: none; box-shadow: 0 0 0 3px var(--sage-pale); }
 
 /* Speaking tasks */
 .speakTasks { list-style: none; margin: 12px 0 0; padding: 0; }
