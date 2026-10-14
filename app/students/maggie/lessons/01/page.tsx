@@ -61,7 +61,7 @@ const ideaFixes: FixItem[] = [
   { said: "I scattered my energy into many different areas.", natural: <>I <b>spread myself too thin</b> across too many activities.</>, why: "A fixed expression for when your attention is divided between too many things." },
   { said: "I still not good at technical skills and English.", natural: <>I<b>&apos;m</b> still not very <b>good at</b> technical skills or English.</>, why: "Don't forget the verb: I'm good at, I'm not good at. Use or after not." },
   { said: "I hope I can reduce my time on other activities.", natural: <>I hope I can <b>spend less time on</b> other activities.</>, why: "We spend time on an activity. Use less time, not reduce my time." },
-  { said: "Devote most of my time to the skill learning about English and technical.", natural: <>I want to <b>devote</b> most of my time <b>to improving</b> my English and <b>developing</b> my technical skills.</>, why: "devote time to + noun or -ing. Technical describes a noun: technical skills." },
+  { said: "Devote most of my time to the skill learning about English and technical.", natural: <>I want to devote most of my time <b>to improving</b> my English and <b>developing</b> my technical skills.</>, why: "devote time to + noun or -ing. Technical describes a noun: technical skills." },
   { said: "Everyone's time is same.", natural: <><b>Everyone has the same</b> twenty-four hours each day.</>, why: "Say the same, never just same. Everyone takes has, not have." },
 ];
 
