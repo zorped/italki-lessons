@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 const recurring = [
   { title: "Plural nouns after numbers", example: <>two sentence → two sentence<b>s</b></>, lessons: [{ id: "03", href: "/students/maggie/lessons/03#quantity" }, { id: "04", href: "/students/maggie/lessons/04#speaking-checks" }] },
   { title: "Past tense when telling a story", example: <>last Friday I <b>had</b> a meeting</>, lessons: [{ id: "03", href: "/students/maggie/lessons/03#past-story" }, { id: "04", href: "/students/maggie/lessons/04#speaking-checks" }] },
+  { title: "Will or present for habits", example: <>When I have time, I <b>usually book</b> exhibitions.</>, lessons: [{ id: "03", href: "/students/maggie/lessons/03#habits" }] },
+  { title: "A before one countable thing", example: <>it has <b>a</b> trade-off · <b>a</b> bachelor&apos;s degree</>, lessons: [{ id: "03", href: "/students/maggie/lessons/03#quantity" }] },
   { title: "Word forms", example: <>confused / confusing · genuine / genuine<b>ly</b></>, lessons: [{ id: "03", href: "/students/maggie/lessons/03#similar-words" }, { id: "04", href: "/students/maggie/lessons/04#speaking-checks" }] },
 ];
 

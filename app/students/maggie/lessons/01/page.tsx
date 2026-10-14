@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContextReading, type ReadingPage } from "../../../../components/ContextReading";
-import { LessonHeader, LessonMap, LessonSection, StartHere, type MapStep } from "../../../../components/LessonBlocks";
+import { FixList, LessonHeader, LessonMap, LessonSection, StartHere, type FixItem, type MapStep } from "../../../../components/LessonBlocks";
 import { CompleteLessonButton } from "../../../../components/LessonProgress";
 import { ListenButton } from "../../../../components/ListenButton";
 import { StudentShell } from "../../../../components/StudentShell";
@@ -57,12 +57,22 @@ const soundGroups = [
   },
 ];
 
-const patterns = [
-  { chunk: "spread myself too thin", sentence: "I spread myself too thin across too many activities.", use: "when your attention is divided between too many things" },
-  { chunk: "be good at + noun / -ing", sentence: "I'm still not very good at technical skills or English.", use: "for skills and abilities" },
-  { chunk: "spend time on + activity", sentence: "I want to spend less time on other activities.", use: "for where your time goes" },
-  { chunk: "devote time to + noun / -ing", sentence: "I want to devote most of my time to improving my English and developing my technical skills.", use: "stronger than spend: a deliberate choice" },
-  { chunk: "everyone has", sentence: "Everyone has the same twenty-four hours each day.", use: "everyone takes a singular verb: has, not have" },
+const ideaFixes: FixItem[] = [
+  { said: "I scattered my energy into many different areas.", natural: <>I <b>spread myself too thin</b> across too many activities.</>, why: "A fixed expression for when your attention is divided between too many things." },
+  { said: "I still not good at technical skills and English.", natural: <>I<b>&apos;m</b> still not very <b>good at</b> technical skills or English.</>, why: "Don't forget the verb: I'm good at, I'm not good at. Use or after not." },
+  { said: "I hope I can reduce my time on other activities.", natural: <>I hope I can <b>spend less time on</b> other activities.</>, why: "We spend time on an activity. Use less time, not reduce my time." },
+  { said: "Devote most of my time to the skill learning about English and technical.", natural: <>I want to <b>devote</b> most of my time <b>to improving</b> my English and <b>developing</b> my technical skills.</>, why: "devote time to + noun or -ing. Technical describes a noun: technical skills." },
+  { said: "Everyone's time is same.", natural: <><b>Everyone has the same</b> twenty-four hours each day.</>, why: "Say the same, never just same. Everyone takes has, not have." },
+];
+
+const smallFixes: FixItem[] = [
+  { said: "If I want to make obsessive effort on English learning…", natural: <>If I want to <b>put</b> more effort <b>into</b> learning English…</>, why: "We put effort into something. Into + noun or -ing." },
+  { said: "…then I should trade off other activity.", natural: <>…then I should give up some other <b>activities</b>.</>, why: "After other, many, some and different, use a plural noun. Say the final -s so people hear it." },
+  { said: "It's a noun and an adjective in different situation.", natural: <>It&apos;s a noun or an adjective in different <b>situations</b>.</>, why: "Different + plural noun: different situations, different ways." },
+  { said: "I can continue read.", natural: <>Shall I <b>continue reading</b>?</>, why: "continue + -ing (or continue to read). Use Shall I…? to offer." },
+  { said: "So, why I choose this paragraph because it inspires me.", natural: <>I <b>chose</b> this paragraph because it inspired me.</>, why: "Give the answer, then because. The choice was in the past, so: chose." },
+  { said: "If we pick one, we will lose another.", natural: <>If we pick one, we lose <b>the other</b>.</>, why: "When there are only two things, the second one is the other. Another means one more." },
+  { said: "I think it's similar with long for, right?", natural: <>I think it&apos;s <b>similar to</b> long for, right?</>, why: "We always say similar to. (You said it correctly later in the lesson.)" },
 ];
 
 function Stressed({ sound }: { sound: string }) {
@@ -509,7 +519,7 @@ const readingPages: ReadingPage[] = [
 
 const steps: MapStep[] = [
   { id: "pronunciation", title: "Pronunciation", kind: "Listen · repeat" },
-  { id: "natural-english", title: "Your ideas, naturally", kind: "Patterns" },
+  { id: "natural-english", title: "Your sentences, naturally", kind: "Fix it" },
   { id: "reading-in-context", title: "The article", kind: "Reading" },
   { id: "practice", title: "Practise the language", kind: "Quiz · speaking" },
 ];
@@ -552,16 +562,12 @@ export default function MaggieLessonOne() {
           <p className="calloutNote"><span className="noteLabel">Final-s check</span><em>areas</em>, <em>consumes</em> and <em>throws</em> finish with a clear /z/ sound. Do not let the ending disappear.</p>
         </LessonSection>
 
-        <LessonSection id="natural-english" number={2} kind="Patterns" title="Your ideas, naturally" lead="These are your own ideas from the discussion. Learn the highlighted chunk, then change the details to talk about your life.">
-          <div className="patternCards">
-            {patterns.map((item) => (
-              <article key={item.chunk}>
-                <p className="patternChunk">{item.chunk}</p>
-                <p className="patternSentence">{item.sentence}</p>
-                <p className="patternUse">{item.use}</p>
-              </article>
-            ))}
-          </div>
+        <LessonSection id="natural-english" number={2} kind="Fix it" title="Your sentences, naturally" lead="These are things you said in our two lessons. Read what you said, try to say it better out loud, then open the natural version.">
+          <h3 className="panelTitle">Talking about time and effort</h3>
+          <FixList items={ideaFixes} layout="grid" />
+          <h3>Small things to check</h3>
+          <p className="hint">Each one is a small change, but together they make you sound much more natural.</p>
+          <FixList items={smallFixes} layout="grid" />
         </LessonSection>
 
         <LessonSection id="reading-in-context" number={3} kind="Reading" title="Read with help in context" lead="Read normally. Hover over a highlight, or tap it on a phone, to open a note. The colour shows how useful the word is to learn first.">

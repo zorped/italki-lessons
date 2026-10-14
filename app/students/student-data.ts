@@ -78,7 +78,7 @@ export const maggie: StudentConfig = {
       href: "/students/maggie/lessons/01",
       sections: [
         { id: "pronunciation", number: "1", title: "Pronunciation" },
-        { id: "natural-english", number: "2", title: "Your ideas, naturally" },
+        { id: "natural-english", number: "2", title: "Your sentences, naturally" },
         { id: "reading-in-context", number: "3", title: "The article" },
         { id: "practice", number: "4", title: "Practise the language" },
       ],
@@ -94,8 +94,9 @@ export const maggie: StudentConfig = {
         { id: "quantity", number: "1", title: "Much or many? Little or few?" },
         { id: "verb-patterns", number: "2", title: "Words that go together" },
         { id: "past-story", number: "3", title: "Telling a story about the past" },
-        { id: "similar-words", number: "4", title: "Similar words" },
-        { id: "practice", number: "5", title: "Say it out loud" },
+        { id: "habits", number: "4", title: "Will or present?" },
+        { id: "similar-words", number: "5", title: "Similar words" },
+        { id: "practice", number: "6", title: "Say it out loud" },
       ],
     },
     {

@@ -18,6 +18,7 @@ const pastCheck: FixItem[] = [
 const pluralCheck: FixItem[] = [
   { said: "Some word… two sentence…", natural: <>some <b>words</b> · two <b>sentences</b></>, why: "After two, three, many, some or several, add -s." },
   { said: "Another problems.", natural: <>another <b>problem</b></>, why: "Another means one more, so the noun stays singular." },
+  { said: "Leaders or other person, I think.", natural: <>Leaders or other <b>people</b>, I think.</>, why: "Some plurals change completely: person → people, child → children." },
 ];
 
 const laterChecks: FixItem[] = [
@@ -26,6 +27,9 @@ const laterChecks: FixItem[] = [
   { said: "They have a little confused.", natural: <>They <b>were</b> a little <b>confused</b>.</>, why: "A person is confused. A thing is confusing. The feeling is confusion." },
   { said: "What's the means of recurring?", natural: <>What does <b>recurring mean</b>?</>, why: "What does ___ mean? is the standard question for any new word." },
   { said: "Please check whether have any mistake.", natural: <>Please check whether <b>there are any mistakes</b>.</>, why: "After whether, you still need a full sentence: subject and verb." },
+  { said: "I don't know whether I have making mistakes.", natural: <>I don&apos;t know whether <b>I&apos;m making</b> any mistakes.</>, why: "For something happening now, use am / is / are + -ing. Have making doesn't exist." },
+  { said: "I usually use I or we start.", natural: <>I usually <b>start with</b> I or we.</>, why: "Start with and begin with go together. Put the verb first." },
+  { said: "Expected they could understand, but no.", natural: <>I <b>expected them to</b> understand, but they didn&apos;t.</>, why: "expect someone to do something. Also remember the subject: I expected." },
   { said: "See you next the class.", natural: <>See you <b>next lesson</b>. / See you in our next lesson.</>, why: "No the and no preposition before next: next week, next Friday, next lesson." },
   { said: "When my team has a problem, I step into help.", natural: <>When my team has a problem, I <b>step in</b> to help.</>, why: "Step in = get involved to help. Step into = start a new role: She stepped into the manager role." },
 ];
@@ -160,6 +164,7 @@ export default function MaggieLessonFour() {
                 <div><dt>so that</dt><dd>gives the reason or goal<span>Review the list early <b>so that</b> we can prepare.</span></dd></div>
                 <div><dt>such as</dt><dd>gives examples<span>Review urgent requests, <b>such as</b> system fixes.</span></dd></div>
               </dl>
+              <FixList items={[{ said: "Plan the next two sprints in advance, such as review early.", natural: <>Plan the next two sprints in advance <b>so that</b> we can review requests early.</>, why: "Here you are giving the reason, not an example, so use so that." }]} />
             </div>
           </div>
         </LessonSection>

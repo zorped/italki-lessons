@@ -14,6 +14,12 @@ const quantityFixes: FixItem[] = [
   { said: "I work too much tasks at the same time.", natural: <>I work on <b>too many tasks</b> at the same time.</>, why: "Tasks can be counted, so: many." },
   { said: "I planned too much work and activities for today.", natural: <>I planned <b>too much work</b> and <b>too many activities</b> for today.</>, why: "Work is uncountable; activities are countable. Each noun needs its own word." },
   { said: "I spent a few time taking care of my child.", natural: <>I spent <b>a little time</b> taking care of my child.</>, why: "Time (meaning hours and minutes) is uncountable: a little time." },
+  { said: "Every week I took three class with a teacher.", natural: <>Every week I took three <b>classes</b> with a teacher.</>, why: "After a number, a countable noun needs -s. Say it clearly: class-es." },
+];
+
+const articleFixes: FixItem[] = [
+  { said: "Obsessive effort on English learning has trade-off.", natural: <>It has <b>a</b> trade-off.</>, why: "One countable thing needs a in front of it: a trade-off, a breakthrough, a setback." },
+  { said: "We just have, at least, bachelor degree.", natural: <>We just need at least <b>a bachelor&apos;s</b> degree.</>, why: "Degree is countable, so it needs a. Note the spelling: bachelor's degree." },
 ];
 
 const quantityQuiz: ChoiceItem[] = [
@@ -31,6 +37,22 @@ const verbFixes: FixItem[] = [
   { said: "My listening will have a breakthrough.", natural: <>I will <b>make a breakthrough in</b> my listening.</>, why: "A person makes a breakthrough in something." },
   { said: "I usually spend myself too thin.", natural: <>I usually <b>spread myself too thin</b>.</>, why: "A fixed expression: to try to do too many things at once." },
   { said: "I always confuse this word with destiny.", natural: <>I always <b>mix up</b> fate and destiny.</>, why: "Mix up A and B is the everyday way to say you confuse two things." },
+  { said: "I spend massive amounts of time to climb the mountain.", natural: <>I <b>spent</b> a lot of time <b>climbing</b> the mountain.</>, why: "spend time + -ing: spend time reading, spend time climbing. Never spend time to." },
+  { said: "If we want to apply our company's job…", natural: <>If you want to <b>apply for</b> a job at our company…</>, why: "We apply for a job, a visa, a course." },
+  { said: "Then you message to me.", natural: <>Then you <b>message me</b>.</>, why: "Message, email, call and tell take the person directly, with no to." },
+  { said: "So I repeat: the obsessive learning English has trade-off.", natural: <><b>Learning English obsessively</b> has a trade-off.</>, why: "An adverb (-ly) describes an action. An adjective describes a thing: obsessive effort, but learn obsessively." },
+];
+
+const habitFixes: FixItem[] = [
+  { said: "If I have time, I will book many exhibitions or activities.", natural: <><b>When</b> I have time, I <b>usually book</b> exhibitions or other activities.</>, why: "For something you often do, use the present: I usually book. Will is for plans and promises." },
+  { said: "When I face setbacks, I will talk with my friends.", natural: <>When I face setbacks, I <b>talk to</b> my friends about how to solve them.</>, why: "This is what you normally do, so use the present simple." },
+];
+
+const habitQuiz: ChoiceItem[] = [
+  { sentence: "On Sundays I usually ___ late.", options: ["will wake up", "wake up"], answers: ["wake up"], why: "A habit: present simple." },
+  { sentence: "Don't worry, I ___ the report tonight.", options: ["send", "will send"], answers: ["will send"], why: "A promise about the future: will." },
+  { sentence: "When I'm tired after work, I ___ a walk.", options: ["take", "will take"], answers: ["take"], why: "What you usually do: present simple." },
+  { sentence: "It's raining. I think I ___ the bus today.", options: ["take", "will take"], answers: ["will take"], why: "A decision you make now: will." },
 ];
 
 const degreeQuiz: ChoiceItem[] = [
@@ -58,6 +80,7 @@ const steps: MapStep[] = [
   { id: "quantity", title: "Much or many?", kind: "Rule · quiz" },
   { id: "verb-patterns", title: "Words that go together", kind: "Fix it" },
   { id: "past-story", title: "A story in the past", kind: "Model" },
+  { id: "habits", title: "Will or present?", kind: "Fix it · quiz" },
   { id: "similar-words", title: "Similar words", kind: "Quiz" },
   { id: "practice", title: "Say it out loud", kind: "Speaking" },
 ];
@@ -101,10 +124,13 @@ export default function MaggieLessonThree() {
               <FixList items={quantityFixes} />
             </div>
           </div>
+          <h3>One thing needs a</h3>
+          <p className="hint">If you can count it and there is only one, put a (or the) in front.</p>
+          <FixList items={articleFixes} layout="grid" />
           <ChoiceQuiz id="maggie-03-quantity" title="Check yourself" items={quantityQuiz} layout="grid" />
         </LessonSection>
 
-        <LessonSection id="verb-patterns" number={2} kind="Fix it" title="Words that go together" lead="Some verbs need -ing after them, some need a noun, and some always take the same partner. Learn them as one piece.">
+        <LessonSection id="verb-patterns" number={2} kind="Fix it" title="Words that go together" lead="Some verbs need -ing after them, some need a small word like for or into, and some need none. Learn them as one piece.">
           <FixList items={verbFixes} layout="grid" />
         </LessonSection>
 
@@ -117,7 +143,29 @@ export default function MaggieLessonThree() {
           <p className="calloutNote"><b>Had made</b> shows something happened <i>before</i> another past moment: the breakthrough came first, then you realised it.</p>
         </LessonSection>
 
-        <LessonSection id="similar-words" number={4} kind="Quiz" title="Similar words" lead="Choose the word that fits. The explanation appears after you answer.">
+        <LessonSection id="habits" number={4} kind="Fix it · quiz" title="Will or present?" lead="When you talked about your free time, you often used will for things you usually do. In English, habits use the present simple.">
+          <div className="split">
+            <div>
+              <h3 className="panelTitle">Your sentences</h3>
+              <FixList items={habitFixes} />
+            </div>
+            <div className="ruleTiles">
+              <div className="ruleTile tileCount">
+                <p className="tileHead">Present simple</p>
+                <p className="tileNouns">habits, routines, things that are usually true</p>
+                <ul><li>I <b>usually go</b> hiking.</li><li>I <b>talk</b> to my friends.</li></ul>
+              </div>
+              <div className="ruleTile tileMass">
+                <p className="tileHead">will</p>
+                <p className="tileNouns">promises, decisions now, predictions</p>
+                <ul><li>I <b>will send</b> it today.</li><li>I think I<b>&apos;ll go</b>.</li></ul>
+              </div>
+            </div>
+          </div>
+          <ChoiceQuiz id="maggie-03-habits" title="Check yourself" items={habitQuiz} layout="grid" />
+        </LessonSection>
+
+        <LessonSection id="similar-words" number={5} kind="Quiz" title="Similar words" lead="Choose the word that fits. The explanation appears after you answer.">
           <div className="split">
             <ChoiceQuiz id="maggie-03-degree" title="merely · barely · hardly · rarely" items={degreeQuiz} />
             <ChoiceQuiz id="maggie-03-problems" title="setback · obstacle · delay · failure" items={problemQuiz} />
@@ -139,7 +187,7 @@ export default function MaggieLessonThree() {
           </div>
         </LessonSection>
 
-        <LessonSection id="practice" number={5} kind="Speaking" title="Say it out loud" lead="Speak for 30–60 seconds on each. Record yourself if you can, then listen for much/many and past tense.">
+        <LessonSection id="practice" number={6} kind="Speaking" title="Say it out loud" lead="Speak for 30–60 seconds on each. Record yourself if you can, then listen for much/many and past tense.">
           <ol className="speakTasks">
             <SpeakTask number={1} model="Last week I had too many meetings and too much paperwork, so I had only a little time to plan. Next week I want fewer meetings.">Describe a busy week at work. Use <b>many</b>, <b>much</b>, <b>a little</b> and <b>fewer</b>.</SpeakTask>
             <SpeakTask number={2} model="Five years ago, I enrolled in an English class. After a few months, I realised I had made a breakthrough in my listening. Later, I got busy and didn't continue learning regularly.">Tell your English-learning story again. Start with <b>Five years ago</b> and keep it in the past.</SpeakTask>
