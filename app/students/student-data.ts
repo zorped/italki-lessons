@@ -97,6 +97,22 @@ export const maggie: StudentConfig = {
         { id: "practice", number: "3.4", title: "Practice" },
       ],
     },
+    {
+      id: "04",
+      number: "04",
+      title: "Understanding workplace emails",
+      summary: "Briefing, beyond, recurring, spillover and workplace pronunciation.",
+      date: "13 October 2026",
+      href: "/students/maggie/lessons/04",
+      sections: [
+        { id: "workplace-vocabulary", number: "4.1", title: "Highlighted words" },
+        { id: "pronunciation", number: "4.2", title: "Pronunciation" },
+        { id: "beyond-bandwidth", number: "4.3", title: "Beyond our bandwidth" },
+        { id: "workplace-wording", number: "4.4", title: "Workplace wording" },
+        { id: "speech-patterns", number: "4.5", title: "Speech patterns" },
+        { id: "practice", number: "4.6", title: "Practice" },
+      ],
+    },
   ],
 };
 

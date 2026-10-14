@@ -28,7 +28,7 @@ test("renders Ronaldo's isolated lesson overview", async () => {
   assert.match(html, /Rodrigues/);
   assert.match(html, /Your English notebook/);
   assert.match(html, /href="\/students\/ronaldo\/lessons\/01"/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ihar/);
 });
@@ -43,7 +43,7 @@ test("renders Ronaldo's first chapter", async () => {
   assert.match(html, /6 items/);
   assert.match(html, /begin directly with sn/);
   assert.match(html, /begin directly with fl/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ihar/);
 });
@@ -53,7 +53,7 @@ test("renders Ihar's isolated lesson overview", async () => {
   assert.match(html, /Ihar/);
   assert.match(html, /Your English notebook/);
   assert.match(html, /href="\/students\/ihar\/lessons\/01"/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ronaldo/);
 });
@@ -65,7 +65,7 @@ test("renders Ihar's first chapter", async () => {
   assert.match(html, /25 July 2026/);
   assert.match(html, /Review corrections/);
   assert.match(html, /Mark lesson complete/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.match(html, /blood drive/i);
   assert.match(html, /altruistic/i);
   assert.match(html, /Emergency, not extreme/);
@@ -85,7 +85,7 @@ test("renders Maggie's isolated English notebook", async () => {
   assert.match(html, /Your English notebook/);
   assert.match(html, /href="\/students\/maggie\/lessons\/01"/);
   assert.match(html, /href="\/students\/maggie\/lessons\/03"/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });
@@ -159,7 +159,7 @@ test("renders Sarah's isolated Hindi lesson overview", async () => {
   assert.match(html, /Your Hindi notebook/);
   assert.match(html, /href="\/students\/sarah\/lessons\/01"/);
   assert.match(html, /href="\/students\/sarah\/lessons\/02"/);
-  assert.match(html, /aria-label="Hide sidebar"/);
+  assert.match(html, /aria-label="Lesson navigation"/);
   assert.doesNotMatch(html, /href="\/"/);
   assert.doesNotMatch(html, /\/students\/ronaldo/);
   assert.doesNotMatch(html, /\/students\/ihar/);
@@ -226,7 +226,7 @@ test("renders Amanda's Chapter 7 review without publishing source files", async 
   assert.match(html, /Page 116 · Exercise 1/);
   assert.match(html, /Page 116 · Exercise 2/);
   assert.match(html, /Mark chapter complete/);
-  assert.match(html, /\/students\/amanda\/chapters\/07#translation-toolkit/);
+  assert.match(html, /id="translation-toolkit"/);
   assert.doesNotMatch(html, /Starter vocabulary/);
   assert.doesNotMatch(html, /Useful.*मुझे.*patterns/);
   assert.doesNotMatch(html, /\.pdf/i);
