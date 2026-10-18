@@ -90,6 +90,16 @@ test("renders Maggie's isolated English notebook", async () => {
   assert.doesNotMatch(html, /\/students\/ronaldo|\/students\/ihar|\/students\/sarah|\/students\/amanda/);
 });
 
+test("keeps Maggie's new review focused and private", async () => {
+  const html = await render("/students/maggie/lessons/06");
+  assert.match(html, /18 October 2026/);
+  assert.match(html, /Would you like a little more/);
+  assert.match(html, /Both ask the same yes\/no question/);
+  assert.match(html, /future viewed from the past/);
+  assert.doesNotMatch(html, /\/students\/(?:alex|amanda|sarah|ihar|ronaldo)/);
+  assert.doesNotMatch(html, /\.m4a|whisper-medium-transcript/);
+});
+
 test("renders Maggie's third lesson review", async () => {
   const html = await render("/students/maggie/lessons/03");
   assert.match(html, /Precise words and natural patterns/);

@@ -116,6 +116,35 @@ export const maggie: StudentConfig = {
         { id: "practice", number: "7", title: "Say it out loud" },
       ],
     },
+    {
+      id: "05",
+      number: "05",
+      title: "From workplace words to clear sentences",
+      summary: "Skills, standards and workplace language, with pronunciation and speaking feedback.",
+      date: "15 October 2026",
+      href: "/students/maggie/lessons/05",
+      sections: [
+        { id: "speaking-patterns", number: "1", title: "Your sentences, naturally" },
+        { id: "words", number: "2", title: "Your workplace words" },
+        { id: "word-choices", number: "3", title: "Choose the right word" },
+        { id: "pronunciation", number: "4", title: "Pronunciation" },
+        { id: "practice", number: "5", title: "Say it out loud" },
+        { id: "email-workshop", number: "6", title: "Your emails, made clearer" },
+      ],
+    },
+    {
+      id: "06", number: "06", title: "Small words, clearer meaning",
+      summary: "A bit, a little, if/whether and will/would/going to, with your own speaking examples.",
+      date: "18 October 2026", href: "/students/maggie/lessons/06",
+      sections: [
+        { id: "speaking", number: "1", title: "Your speaking checks" },
+        { id: "small-amounts", number: "2", title: "A bit, a little, some more" },
+        { id: "questions", number: "3", title: "If or whether?" },
+        { id: "future-forms", number: "4", title: "Will, would, going to" },
+        { id: "useful-pairs", number: "5", title: "Useful pairs to keep" },
+        { id: "practice", number: "6", title: "From knowing to saying" },
+      ],
+    },
   ],
 };
 
