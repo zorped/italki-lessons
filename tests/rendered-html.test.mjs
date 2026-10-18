@@ -79,6 +79,17 @@ test("renders Ihar's first chapter", async () => {
   assert.doesNotMatch(html, /\/students\/ronaldo/);
 });
 
+test("keeps Alex's conversation lesson isolated from other student material", async () => {
+  const html = await render("/students/alex/lessons/01");
+  assert.match(html, /Stories, questions and staying connected/);
+  assert.match(html, /15 October 2026/);
+  assert.match(html, /Do you share reels with your friends/);
+  assert.match(html, /convenient/);
+  assert.match(html, /sold out/);
+  assert.doesNotMatch(html, /\/students\/(?:maggie|amanda|sarah|ihar|ronaldo)/);
+  assert.doesNotMatch(html, /\.m4a|whisper-medium-transcript/);
+});
+
 test("renders Maggie's isolated English notebook", async () => {
   const html = await render("/students/maggie");
   assert.match(html, /Maggie/);

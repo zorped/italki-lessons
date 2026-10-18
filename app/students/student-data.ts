@@ -148,6 +148,31 @@ export const maggie: StudentConfig = {
   ],
 };
 
+export const alex: StudentConfig = {
+  id: "alex",
+  name: "Alex",
+  initial: "A",
+  language: "English",
+  basePath: "/students/alex",
+  focus: "Speaking confidently with international colleagues and preparing for job interviews.",
+  lessons: [
+    { id: "trial", number: "Trial", title: "Your speaking goals", summary: "International work, interview preparation and speaking confidence.", date: "14 October 2026", href: "/students/alex/lessons/trial" },
+    {
+      id: "01", number: "01", title: "Stories, questions and staying connected", summary: "Social media, education and Moscow: past stories, clearer questions and useful words.", date: "15 October 2026", href: "/students/alex/lessons/01",
+      sections: [
+        { id: "past-story", number: "1", title: "Tell a story in the past" },
+        { id: "questions", number: "2", title: "Ask questions in the past" },
+        { id: "small-words", number: "3", title: "Small words, big difference" },
+        { id: "experience", number: "4", title: "Have you ever been…?" },
+        { id: "vocabulary", number: "5", title: "Words to learn and revisit" },
+        { id: "your-ideas", number: "6", title: "Say what you meant" },
+        { id: "sounds", number: "7", title: "Listen and repeat" },
+        { id: "practice", number: "8", title: "Keep the conversation going" },
+      ],
+    },
+  ],
+};
+
 export const sarah: StudentConfig = {
   id: "sarah",
   name: "Sara",

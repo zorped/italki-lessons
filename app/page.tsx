@@ -41,6 +41,11 @@ export default function Home() {
         </div>
 
         <div className="studentGrid">
+          <Link className="studentCard cardIhar" href="/students/alex">
+            <div className="studentCardTop"><span className="studentInitial">A</span><span className="openLabel">Open notebook <span aria-hidden="true">↗</span></span></div>
+            <div><p className="cardLabel">English · 15 October 2026</p><h3>Alex</h3><p>International work, interview preparation and speaking confidence.</p></div>
+            <div className="topicChips" aria-label="Lesson topics"><span>Speaking</span><span>Interviews</span><span>Confidence</span></div>
+          </Link>
           <Link className="studentCard cardRonaldo" href="/students/ronaldo">
             <div className="studentCardTop">
               <span className="studentInitial">R</span>
